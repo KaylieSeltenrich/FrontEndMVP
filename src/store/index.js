@@ -1,18 +1,26 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from 'axios';
+import cookies from "vue-cookies";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     images: [],
+    loginToken: cookies.get("session"),
   },
 
   mutations: {
     updateImages: function(state,data) {
       state.images = data;
-    }
+    },
+    loginUpdate: function (state, data) {
+      state.loginToken = data
+    },
+    loginDelete: function (state) {
+      state.loginToken = undefined
+    },
   },
   actions: {
     getImages: function(context,searchinput) {

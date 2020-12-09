@@ -1,17 +1,32 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home | </router-link> 
-      <router-link to="/create">Create | </router-link>
-      <router-link to="/profile">Profile | </router-link>
-      <router-link to="/favourites">Favourites | </router-link>
-      <router-link to="/login"> Login | </router-link>
-      <router-link to="/signup"> Signup | </router-link>
+      <router-link v-if="loginToken" to="/">Home | </router-link> 
+      <router-link v-if="loginToken" to="/create">Create | </router-link>
+      <router-link v-if="loginToken" to="/profile">Profile | </router-link>
+      <router-link v-if="loginToken" to="/favourites">Favourites | </router-link>
+      <router-link v-if="!loginToken" to="/login"> Login | </router-link>
+      <router-link v-if="!loginToken" to="/signup"> Signup | </router-link>
+      <logout v-if="loginToken"> </logout>
     </div>
     <router-view />
   </div>
 </template>
+<script>
+import cookies from "vue-cookies";
+import Logout from "./components/Logout.vue"
 
+export default {
+  components: {
+    Logout,
+  },
+  data() {
+    return {
+      loginToken: cookies.get("session")
+    };
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

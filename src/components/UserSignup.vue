@@ -33,10 +33,6 @@ export default {
         .request({
           url: "http://127.0.0.1:5000/api/users",
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Api-Key": "SVzuhkqP5JrStTsfETYXW6UQZs0UV95ENy1VscJoZ3L5P"
-          },
           data: {
             email: this.email,
             username: this.username,

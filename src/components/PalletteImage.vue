@@ -7,7 +7,7 @@
       width="500px"
     />
     <div class="pallettecolor" v-for="color in colors" :key="color">
-      <div class="fill" v-bind:style="'background-color:'+ color"></div>
+      <div class="fill" v-bind:style="'background-color:' + color"></div>
     </div>
   </div>
 </template>
@@ -41,8 +41,7 @@ export default {
     },
 
     GetPallette: function(image) {
-  
-     image.crossOrigin = 'Anonymous';
+      image.crossOrigin = "Anonymous";
       var color = this.colorThief.getPalette(image);
       var i = 0;
       this.colors = [];

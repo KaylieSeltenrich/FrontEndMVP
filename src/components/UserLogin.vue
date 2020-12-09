@@ -12,7 +12,45 @@
 </template>
 
 <script>
+import axios from "axios";
+import cookies from "vue-cookies";
 
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      loginStatus: ""
+    };
+  },
+  methods: {
+    loginUser: function() {
+      this.loginStatus = "Loading";
+      axios
+        .request({
+          url: "http://127.0.0.1:5000/api/login",
+          method: "POST",
+          data: {
+            email: this.email,
+            password: this.password
+          }
+        })
+        .then(response => {
+  
+          console.log(response);
+          this.loginStatus = "Success";
+          cookies.set("session", response.data.loginToken);
+          cookies.set("user", response.data.userId);
+          this.$store.commit("loginUpdate",response.data.loginToken);
+          this.$router.push("/");
+        })
+        .catch(error => {
+          console.log(error);
+          this.loginStatus = "Error";
+        });
+    }
+  }
+};
 </script>
 
 <style lang="css" scoped>
