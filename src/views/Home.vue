@@ -1,26 +1,17 @@
 <template>
   <div class="home">
-  <search-bar v-if="loginToken"> </search-bar>
-  <color-picker> </color-picker>
+  <display-boards></display-boards>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import SearchBar from "@/components/Searchbar.vue";
-import ColorPicker from "@/components/ColorPicker.vue";
-import cookies from 'vue-cookies';
+import DisplayBoards from "@/components/DisplayBoards.vue";
 
 export default {
   name: "Home",
   components: {
-    SearchBar,
-    ColorPicker
+    DisplayBoards
   },
-  data() {
-    return {
-      loginToken: cookies.get("session")
-    };
-  }
 };
 </script>

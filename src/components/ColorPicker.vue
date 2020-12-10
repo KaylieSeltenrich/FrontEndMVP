@@ -1,7 +1,6 @@
 <template>
     <div id="image-container">
       <pallette-image v-for="image in images" :image="image" :key="image.src.medium">
-      
       </pallette-image>
    </div>
 </template>

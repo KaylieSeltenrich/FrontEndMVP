@@ -7,26 +7,47 @@
       width="500px"
     />
     <div class="pallettecolor" v-for="color in colors" :key="color">
-      <div class="fill" v-bind:style="'background-color:' + color"></div>
+      <div class="fill" v-bind:style="'background-color:' + color">
+        {{ colorNames }}
+      </div>
     </div>
+    <create-board
+      v-if="colors.length > 0"
+      :image="image.src.medium"
+      :colors="colors"
+    >
+    </create-board>
   </div>
 </template>
 
 <script>
 import ColorThief from "colorthief";
+import CreateBoard from "./CreateBoard.vue";
+import axios from "axios";
 
 export default {
+  components: {
+    CreateBoard,
+  },
+
   props: {
     image: {
       type: Object,
     },
   },
+
   data() {
     return {
       colorThief: new ColorThief(),
       colors: [],
+      colorNames: [],
     };
   },
+
+mounted: function() {
+  this.getColourName();
+},
+
   methods: {
     RGBToHex: function(r, g, b) {
       r = r.toString(16);
@@ -48,6 +69,29 @@ export default {
       for (i = 0; i < 10; i++) {
         var hex = this.RGBToHex(color[i][0], color[i][1], color[i][2]);
         this.colors.push(hex);
+      }
+    },
+
+    getColourName: function() {
+      var i = 0;
+      for (i = 0; i < this.colors.length; i++) {
+        axios
+          .request({
+            url:
+              "https://www.thecolorapi.com/id?hex=" +
+              this.colors[i].replace("#", ""),
+            method: "GET",
+            headers: {
+              Authorization: "Access-Control-Allow-Origin",
+            },
+          })
+          .then((response) => {
+            console.log(response);
+            this.colorNames = response.data.name.value;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     },
   },

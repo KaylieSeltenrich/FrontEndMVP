@@ -15,6 +15,7 @@ export default new Vuex.Store({
     updateImages: function(state,data) {
       state.images = data;
     },
+
     loginUpdate: function (state, data) {
       state.loginToken = data
     },
