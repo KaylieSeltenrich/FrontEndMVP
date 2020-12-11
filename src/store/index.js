@@ -66,7 +66,7 @@ export default new Vuex.Store({
   },
   getters: {
     getUsersBoards: function(state) {
-      return state.boards.filter(function(board) { console.log(board.userId); console.log(state.userId); return state.userId == board.userId })
+      return state.boards.filter(function(board) { return state.userId == board.userId })
     },
   }
 });

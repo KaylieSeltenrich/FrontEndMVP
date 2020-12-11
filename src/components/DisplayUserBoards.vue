@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="page-container">
     <div v-for="board in userBoards" :key="board.id">
       <h2 class="boardtitle">Username:</h2>
       {{ board.username }}
@@ -39,6 +39,7 @@
         </div>
         <h2>Created at:</h2>
         {{ board.createdAt }}
+        <button @click="deleteBoard(board.id)"> Delete Board </button>
       </div>
     </div>
   </div>
@@ -46,17 +47,19 @@
 
 <script>
 import cookies from "vue-cookies";
+import axios from "axios";
 
 export default {
-    mounted () {
-        if(this.$store.state.boards.length == 0){
-           this.$store.dispatch("getAllBoards");
-        }
-
-    },
+  mounted() {
+    if (this.$store.state.boards.length == 0) {
+      this.$store.dispatch("getAllBoards");
+    }
+  },
   data() {
     return {
       userId: cookies.get("user"),
+      deleteStatus: "",
+      loginToken: cookies.get("session"),
     };
   },
   computed: {
@@ -64,7 +67,54 @@ export default {
       return this.$store.getters.getUsersBoards;
     },
   },
+  methods: {
+      deleteBoard: function(boardId) {
+      axios
+        .request({
+          url: "http://127.0.0.1:5000/api/boards",
+          method: "DELETE",
+          data: {
+              loginToken: this.loginToken,
+              id: boardId,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+.fill {
+  width: 100%;
+  height: 100%;
+}
+#container {
+  height: 50vh;
+  width: 30vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#page-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  text-align: center;
+  justify-items: center;
+}
+#image {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.boardtitle {
+  font-size: 1em;
+  margin: 0;
+}
+</style>

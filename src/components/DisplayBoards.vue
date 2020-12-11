@@ -46,6 +46,7 @@
 
 <script>
 export default {
+  
   computed: {
     boards() {
       return this.$store.state.boards;
