@@ -1,6 +1,6 @@
 <template>
     <div id="image-container">
-      <pallette-image v-for="image in images" :image="image" :key="image.src.medium">
+      <pallette-image id="palletteimage" v-for="image in images" :image="image.src.medium" :key="image.src.medium">
       </pallette-image>
    </div>
 </template>
@@ -24,5 +24,7 @@ computed: {
 #image-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    object-fit: contain;
 }
+
 </style>

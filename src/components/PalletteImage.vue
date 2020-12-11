@@ -3,17 +3,18 @@
     <img
       class="image"
       @click="GetPallette($event.currentTarget)"
-      v-bind:src="image.src.medium"
-      width="500px"
-    />
+      v-bind:src="image"
+    /> <br />
     <div class="pallettecolor" v-for="color in colors" :key="color">
       <div class="fill" v-bind:style="'background-color:' + color">
-        {{ colorNames }}
+       <div @click="CopyHex($event.currentTarget)"> 
+         {{ color }}
+        </div>
       </div>
     </div>
     <create-board
       v-if="colors.length > 0"
-      :image="image.src.medium"
+      :image="image"
       :colors="colors"
     >
     </create-board>
@@ -23,7 +24,6 @@
 <script>
 import ColorThief from "colorthief";
 import CreateBoard from "./CreateBoard.vue";
-import axios from "axios";
 
 export default {
   components: {
@@ -32,7 +32,7 @@ export default {
 
   props: {
     image: {
-      type: Object,
+      type: String,
     },
   },
 
@@ -40,13 +40,8 @@ export default {
     return {
       colorThief: new ColorThief(),
       colors: [],
-      colorNames: [],
     };
   },
-
-mounted: function() {
-  this.getColourName();
-},
 
   methods: {
     RGBToHex: function(r, g, b) {
@@ -72,40 +67,32 @@ mounted: function() {
       }
     },
 
-    getColourName: function() {
-      var i = 0;
-      for (i = 0; i < this.colors.length; i++) {
-        axios
-          .request({
-            url:
-              "https://www.thecolorapi.com/id?hex=" +
-              this.colors[i].replace("#", ""),
-            method: "GET",
-            headers: {
-              Authorization: "Access-Control-Allow-Origin",
-            },
-          })
-          .then((response) => {
-            console.log(response);
-            this.colorNames = response.data.name.value;
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
+    CopyHex: function(element){
+      let range = document.createRange()
+      range.selectNode(element)
+      window.getSelection().removeAllRanges()
+      window.getSelection().addRange(range)
+      document.execCommand("copy")
     },
-  },
+    }
 };
+
 </script>
 
 <style lang="css" scoped>
 .pallettecolor {
   display: inline-block;
-  width: 5vw;
   height: 10vh;
 }
 .fill {
+  display: grid;
+  grid-template-columns: 1fr;
   width: 100%;
   height: 100%;
+}
+.image{
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
 }
 </style>
