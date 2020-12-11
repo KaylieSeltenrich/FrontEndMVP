@@ -1,16 +1,17 @@
 <template>
   <div class="profile">
-   <h2> Profile </h2>
+ <display-user-boards> </display-user-boards>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import DisplayUserBoards from "@/components/DisplayUserBoards.vue"
 
 export default {
   name: "Profile",
   components: {
-  
+  DisplayUserBoards
   }
 };
 </script>

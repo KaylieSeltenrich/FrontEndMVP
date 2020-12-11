@@ -40,7 +40,7 @@ export default {
           console.log(response);
           this.loginStatus = "Success";
           cookies.set("session", response.data.loginToken);
-          cookies.set("user", response.data.userId);
+          cookies.set("user", response.data.id);
           this.$store.commit("loginUpdate",response.data.loginToken);
           this.$router.push("/");
         })
