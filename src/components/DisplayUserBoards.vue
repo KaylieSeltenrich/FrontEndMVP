@@ -39,7 +39,8 @@
         </div>
         <h2>Created at:</h2>
         {{ board.createdAt }}
-        <button @click="deleteBoard(board.id)"> Delete Board </button>
+        <button @click="deleteBoard(board.id)"> Delete Board </button> <br />
+        <input type="text" v-model="title"><button @click="updateTitle(board.id)"> Update Board Title </button>
       </div>
     </div>
   </div>
@@ -58,8 +59,8 @@ export default {
   data() {
     return {
       userId: cookies.get("user"),
-      deleteStatus: "",
       loginToken: cookies.get("session"),
+      title: "",
     };
   },
   computed: {
@@ -85,6 +86,26 @@ export default {
           console.log(error);
         });
     },
+
+updateTitle: function(boardId) {
+      axios
+        .request({
+          url: "http://127.0.0.1:5000/api/boards",
+          method: "PATCH",
+          data: {
+              loginToken: this.loginToken,
+              id: boardId,
+              title: this.title,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
   },
 };
 </script>

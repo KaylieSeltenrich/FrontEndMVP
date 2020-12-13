@@ -45,7 +45,7 @@ export default new Vuex.Store({
       })
      },
 
-     getAllBoards: function(context) {
+     getAllBoards: function(context,offset) {
       axios
         .request({
           url: "http://127.0.0.1:5000/api/boards",
@@ -53,7 +53,9 @@ export default new Vuex.Store({
           headers: {
             "Content-Type": "application/json",
           },
-          data: {},
+          params: {
+            offset: offset
+          },
         })
         .then((response) => {
          context.commit("allBoards",response.data)

@@ -4,19 +4,16 @@
       class="image"
       @click="GetPallette($event.currentTarget)"
       v-bind:src="image"
-    /> <br />
+    />
+    <br />
     <div class="pallettecolor" v-for="color in colors" :key="color">
       <div class="fill" v-bind:style="'background-color:' + color">
-       <div @click="CopyHex($event.currentTarget)"> 
-         {{ color }}
+        <div @click="CopyHex($event.currentTarget)">
+          {{ color }}
         </div>
       </div>
     </div>
-    <create-board
-      v-if="colors.length > 0"
-      :image="image"
-      :colors="colors"
-    >
+    <create-board v-if="colors.length > 0" :image="image" :colors="colors">
     </create-board>
   </div>
 </template>
@@ -58,6 +55,7 @@ export default {
 
     GetPallette: function(image) {
       image.crossOrigin = "Anonymous";
+
       var color = this.colorThief.getPalette(image);
       var i = 0;
       this.colors = [];
@@ -67,16 +65,15 @@ export default {
       }
     },
 
-    CopyHex: function(element){
-      let range = document.createRange()
-      range.selectNode(element)
-      window.getSelection().removeAllRanges()
-      window.getSelection().addRange(range)
-      document.execCommand("copy")
+    CopyHex: function(element) {
+      let range = document.createRange();
+      range.selectNode(element);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
     },
-    }
+  },
 };
-
 </script>
 
 <style lang="css" scoped>
@@ -90,7 +87,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-.image{
+.image {
   width: 500px;
   height: 400px;
   object-fit: cover;
