@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <img src="@/assets/inspologo.png" alt="Logo image" width="500px" />
     <div id="nav" v-if="loginToken != undefined">
       <router-link to="/">Home | </router-link>
       <router-link to="/create">Create | </router-link>

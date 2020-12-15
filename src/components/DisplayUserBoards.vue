@@ -1,4 +1,5 @@
 <template>
+<div>
   <div id="page-container">
     <div v-for="board in userBoards" :key="board.id">
       <h2 class="boardtitle">Username:</h2>
@@ -42,18 +43,25 @@
         <button @click="deleteBoard(board.id)"> Delete Board </button> <br />
         <input type="text" v-model="title"><button @click="updateTitle(board.id)"> Update Board Title </button>
       </div>
+       <board-likes :ownerId="board.userId" :boardId="board.id"> </board-likes> 
     </div>
   </div>
+   <button v-if="offset != 0" @click="PreviousBoards()">Previous Page</button><button @click="NextBoards()">Next Page</button>
+</div>
 </template>
 
 <script>
 import cookies from "vue-cookies";
 import axios from "axios";
+import BoardLikes from "./BoardLikes.vue";
 
 export default {
+  components: {
+    BoardLikes,
+  },
   mounted() {
-    if (this.$store.state.boards.length == 0) {
-      this.$store.dispatch("getAllBoards");
+    if (this.$store.state.userBoards.length == 0) {
+      this.$store.dispatch("getUserBoards",this.offset);
     }
   },
   data() {
@@ -61,11 +69,12 @@ export default {
       userId: cookies.get("user"),
       loginToken: cookies.get("session"),
       title: "",
+      offset: 0,
     };
   },
   computed: {
     userBoards() {
-      return this.$store.getters.getUsersBoards;
+      return this.$store.state.userBoards
     },
   },
   methods: {
@@ -104,6 +113,16 @@ updateTitle: function(boardId) {
         .catch((error) => {
           console.log(error);
         });
+    },
+
+     NextBoards: function(){
+     this.offset = this.offset + 5;
+     this.$store.dispatch("getUserBoards",this.offset);
+    },
+
+     PreviousBoards: function(){
+     this.offset = this.offset - 5;
+     this.$store.dispatch("getUserBoards",this.offset);
     },
 
   },

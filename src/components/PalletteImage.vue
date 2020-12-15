@@ -55,7 +55,6 @@ export default {
 
     GetPallette: function(image) {
       image.crossOrigin = "Anonymous";
-
       var color = this.colorThief.getPalette(image);
       var i = 0;
       this.colors = [];

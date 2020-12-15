@@ -40,7 +40,7 @@
           </div>
           <h2>Created at:</h2>
           {{ board.createdAt }}
-        <board-likes :boardId="board.id"> </board-likes>
+        <board-likes :ownerId="board.userId" :boardId="board.id"> </board-likes>
         </div>
       </div>
     </div>
@@ -54,7 +54,7 @@ import BoardLikes from "./BoardLikes.vue";
 export default {
   data() {
     return {
-      offset: 0
+      offset: 0,
     }
   },
   components: {

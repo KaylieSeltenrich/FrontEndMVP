@@ -1,11 +1,13 @@
 <template>
   <div>
     <div id="likes-text">Likes: {{ likesAmount }}</div>
+    <button v-if="!isLiked && userId != ownerId" @click="likeBoard()">Like Board</button>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import cookies from "vue-cookies";
 
 export default {
   mounted() {
@@ -16,6 +18,9 @@ export default {
     return {
       boardLikes: [],
       likesAmount: 0,
+      loginToken: cookies.get("session"),
+      isLiked: true,
+      userId: cookies.get("user"),
     };
   },
 
@@ -23,6 +28,9 @@ export default {
     boardId: {
       type: Number,
     },
+    ownerId: {
+      type: Number,
+    }
   },
 
   methods: {
@@ -31,10 +39,6 @@ export default {
         .request({
           url: "http://127.0.0.1:5000/api/board-likes",
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "X-Api-Key": "SVzuhkqP5JrStTsfETYXW6UQZs0UV95ENy1VscJoZ3L5P",
-          },
           params: {
             boardId: this.boardId,
           },
@@ -42,6 +46,29 @@ export default {
         .then((response) => {
           this.boardLikes = response.data;
           this.likesAmount = this.boardLikes.length;
+          this.isLiked = this.boardLikes.filter((boardLike) => {return boardLike.userId == this.userId}).length == 1
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    likeBoard: function() {
+      axios
+        .request({
+          url: "http://127.0.0.1:5000/api/board-likes",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: {
+            id: this.boardId,
+            loginToken: this.loginToken,
+          },
+        })
+        .then((response) => {
+          console.log(response);
+          this.isLiked = true;
         })
         .catch((error) => {
           console.log(error);
