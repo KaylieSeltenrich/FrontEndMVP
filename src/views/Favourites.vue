@@ -1,16 +1,17 @@
 <template>
   <div class="favourites">
-   <h2> Favourites </h2>
+   <display-favourite-boards> </display-favourite-boards>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import DisplayFavouriteBoards from '../components/DisplayFavouriteBoards.vue';
+
 
 export default {
   name: "Favourites",
   components: {
-  
+  DisplayFavouriteBoards,
   }
 };
 </script>

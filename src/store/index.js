@@ -12,6 +12,7 @@ export default new Vuex.Store({
     boards: [],
     userId: cookies.get("user"),
     userBoards: [],
+    favouriteBoards: [],
   },
 
   mutations: {
@@ -29,7 +30,12 @@ export default new Vuex.Store({
     },
     userBoards: function(state,data){
       state.userBoards = data
+    },
+
+    faveBoards: function(state,data){
+      state.favouriteBoards = data
     }
+
 
   },
   actions: {
@@ -68,6 +74,29 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
+
+
+    getFavouriteBoards: function(context,offset) {
+      axios
+        .request({
+          url: "http://127.0.0.1:5000/api/board-favourites",
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          params: {
+            offset: offset,
+            userId: context.state.userId,
+          },
+        })
+        .then((response) => {
+         context.commit("faveBoards",response.data)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
 
 
     getUserBoards: function(context,offset) {

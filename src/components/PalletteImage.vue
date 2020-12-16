@@ -5,6 +5,7 @@
       @click="GetPallette($event.currentTarget)"
       v-bind:src="image"
     />
+    <h2> {{updateStatus}} </h2>
     <br />
     <div class="pallettecolor" v-for="color in colors" :key="color">
       <div class="fill" v-bind:style="'background-color:' + color">
@@ -37,6 +38,8 @@ export default {
     return {
       colorThief: new ColorThief(),
       colors: [],
+      updateStatus: "",
+      clickCount: 0,
     };
   },
 
@@ -54,14 +57,24 @@ export default {
     },
 
     GetPallette: function(image) {
-      image.crossOrigin = "Anonymous";
+      try { image.crossOrigin = "Anonymous";
       var color = this.colorThief.getPalette(image);
       var i = 0;
       this.colors = [];
       for (i = 0; i < 10; i++) {
         var hex = this.RGBToHex(color[i][0], color[i][1], color[i][2]);
         this.colors.push(hex);
-      }
+      } }
+      catch(err) {
+        console.log(err)
+        if(this.clickCount == 0) {
+          this.clickCount++
+          this.updateStatus = "Please click again"
+        }
+        else if (err.toString().includes("Failed to execute")) {
+        this.updateStatus = "Sorry, unable to use this image due to issue with CORS. Please select a different image, or upload this image through imgur and then use that link instead!"
+        }
+     }
     },
 
     CopyHex: function(element) {

@@ -8,39 +8,40 @@
         {{ board.title }} <br />
         <img id="image" v-bind:src="board.image" />
         <div id="container">
-          <div class="fill" v-bind:style="'background-color:' + board.colour1">
+          <div class="fill" v-bind:style="'background-color:' + board.colour1" @click="CopyHex($event.currentTarget)">
             {{ board.colour1 }}
           </div>
-          <div class="fill" v-bind:style="'background-color:' + board.colour2">
+          <div class="fill" v-bind:style="'background-color:' + board.colour2" @click="CopyHex($event.currentTarget)">
             {{ board.colour2 }}
           </div>
-          <div class="fill" v-bind:style="'background-color:' + board.colour3">
+          <div class="fill" v-bind:style="'background-color:' + board.colour3" @click="CopyHex($event.currentTarget)">
             {{ board.colour3 }}
           </div>
-          <div class="fill" v-bind:style="'background-color:' + board.colour4">
+          <div class="fill" v-bind:style="'background-color:' + board.colour4" @click="CopyHex($event.currentTarget)">
             {{ board.colour4 }}
           </div>
-          <div class="fill" v-bind:style="'background-color:' + board.colour5">
+          <div class="fill" v-bind:style="'background-color:' + board.colour5" @click="CopyHex($event.currentTarget)">
             {{ board.colour5 }}
           </div>
-          <div class="fill" v-bind:style="'background-color:' + board.colour6">
+          <div class="fill" v-bind:style="'background-color:' + board.colour6" @click="CopyHex($event.currentTarget)">
             {{ board.colour6 }}
           </div>
-          <div class="fill" v-bind:style="'background-color:' + board.colour7">
+          <div class="fill" v-bind:style="'background-color:' + board.colour7" @click="CopyHex($event.currentTarget)">
             {{ board.colour7 }}
           </div>
-          <div class="fill" v-bind:style="'background-color:' + board.colour8">
+          <div class="fill" v-bind:style="'background-color:' + board.colour8" @click="CopyHex($event.currentTarget)">
             {{ board.colour8 }}
           </div>
-          <div class="fill" v-bind:style="'background-color:' + board.colour9">
+          <div class="fill" v-bind:style="'background-color:' + board.colour9" @click="CopyHex($event.currentTarget)">
             {{ board.colour9 }}
           </div>
-          <div class="fill" v-bind:style="'background-color:' + board.colour10">
+          <div class="fill" v-bind:style="'background-color:' + board.colour10" @click="CopyHex($event.currentTarget)">
             {{ board.colour10 }}
           </div>
           <h2>Created at:</h2>
           {{ board.createdAt }}
         <board-likes :ownerId="board.userId" :boardId="board.id"> </board-likes>
+        <board-favourites :ownerId="board.userId" :boardId="board.id"> </board-favourites>
         </div>
       </div>
     </div>
@@ -49,6 +50,7 @@
 </template>
 
 <script>
+import BoardFavourites from './BoardFavourites.vue';
 import BoardLikes from "./BoardLikes.vue";
 
 export default {
@@ -59,6 +61,7 @@ export default {
   },
   components: {
     BoardLikes,
+    BoardFavourites,
   },
 
   computed: {

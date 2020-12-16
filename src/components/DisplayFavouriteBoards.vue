@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="page-container">
-      <div v-for="board in userBoards" :key="board.id">
+      <div v-for="board in faveBoards" :key="board.id">
         <h2 class="boardtitle">Username:</h2>
         {{ board.username }}
         <h2 class="boardtitle">Title:</h2>
@@ -80,14 +80,11 @@
           </div>
           <h2>Created at:</h2>
           {{ board.createdAt }}
-          <button @click="deleteBoard(board.id)">Delete Board</button> <br />
-          <input type="text" v-model="title" /><button
-            @click="updateTitle(board.id)"
-          >
-            Update Board Title
-          </button>
         </div>
-        <board-likes :ownerId="board.userId" :boardId="board.id"> </board-likes>
+        <board-likes :ownerId="board.userId" :boardId="board.boardId"> </board-likes>
+        <button @click="unfaveBoard(board.boardId)">
+          UnFavourite Board
+        </button>
       </div>
     </div>
     <button v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
@@ -105,21 +102,20 @@ export default {
     BoardLikes,
   },
   mounted() {
-    if (this.$store.state.userBoards.length == 0) {
-      this.$store.dispatch("getUserBoards", this.offset);
+    if (this.$store.state.favouriteBoards.length == 0) {
+      this.$store.dispatch("getFavouriteBoards", this.offset);
     }
   },
   data() {
     return {
       userId: cookies.get("user"),
       loginToken: cookies.get("session"),
-      title: "",
       offset: 0,
     };
   },
   computed: {
-    userBoards() {
-      return this.$store.state.userBoards;
+    faveBoards() {
+      return this.$store.state.favouriteBoards;
     },
   },
   methods: {
@@ -130,52 +126,36 @@ export default {
       window.getSelection().addRange(range);
       document.execCommand("copy");
     },
-
-    deleteBoard: function(boardId) {
-      axios
-        .request({
-          url: "http://127.0.0.1:5000/api/boards",
-          method: "DELETE",
-          data: {
-            loginToken: this.loginToken,
-            id: boardId,
-          },
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-
-    updateTitle: function(boardId) {
-      axios
-        .request({
-          url: "http://127.0.0.1:5000/api/boards",
-          method: "PATCH",
-          data: {
-            loginToken: this.loginToken,
-            id: boardId,
-            title: this.title,
-          },
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-
     NextBoards: function() {
       this.offset = this.offset + 5;
-      this.$store.dispatch("getUserBoards", this.offset);
+      this.$store.dispatch("getFavouriteBoards", this.offset);
     },
 
     PreviousBoards: function() {
       this.offset = this.offset - 5;
-      this.$store.dispatch("getUserBoards", this.offset);
+      this.$store.dispatch("getFavouriteBoards", this.offset);
+    },
+
+     unfaveBoard: function(boardId) {
+      axios
+        .request({
+          url: "http://127.0.0.1:5000/api/board-favourites",
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: {
+            id: boardId,
+            loginToken: this.loginToken,
+          },
+        })
+        .then((response) => {
+          this.boardFaves = response.data;
+          this.isFaved = false
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

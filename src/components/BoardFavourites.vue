@@ -1,11 +1,10 @@
 <template>
   <div>
-    <div id="likes-text">Likes: {{ likesAmount }}</div>
-    <button v-if="!isLiked && userId != ownerId" @click="likeBoard()">
-      Like Board
+    <button v-if="!isFaved" @click="faveBoard()">
+      Favourite Board
     </button>
-    <button v-if="isLiked && userId != ownerId" @click="unlikeBoard()">
-      Unlike Board
+    <button v-if="isFaved" @click="unfaveBoard()">
+      UnFavourite Board
     </button>
   </div>
 </template>
@@ -16,15 +15,14 @@ import cookies from "vue-cookies";
 
 export default {
   mounted() {
-    this.getLikes();
+    this.getFaves();
   },
 
   data() {
     return {
-      boardLikes: [],
-      likesAmount: 0,
+      boardFaves: [],
       loginToken: cookies.get("session"),
-      isLiked: true,
+      isFaved: false,
       userId: cookies.get("user"),
     };
   },
@@ -39,21 +37,21 @@ export default {
   },
 
   methods: {
-    getLikes: function() {
+    getFaves: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/board-likes",
+          url: "http://127.0.0.1:5000/api/all-faves",
           method: "GET",
           params: {
             boardId: this.boardId,
           },
         })
         .then((response) => {
-          this.boardLikes = response.data;
-          this.likesAmount = this.boardLikes.length;
-          this.isLiked =
-            this.boardLikes.filter((boardLike) => {
-              return boardLike.userId == this.userId;
+          console.log(response)
+          this.boardFaves = response.data;
+          this.isFaved =
+            this.boardFaves.filter((boardFave) => {
+              return boardFave.userId == this.userId;
             }).length == 1;
         })
         .catch((error) => {
@@ -61,10 +59,10 @@ export default {
         });
     },
 
-    likeBoard: function() {
+    faveBoard: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/board-likes",
+          url: "http://127.0.0.1:5000/api/board-favourites",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -76,17 +74,17 @@ export default {
         })
         .then((response) => {
           console.log(response);
-          this.isLiked = true;
+          this.isFaved = true;
         })
         .catch((error) => {
           console.log(error);
         });
     },
 
-    unlikeBoard: function() {
+    unfaveBoard: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/board-likes",
+          url: "http://127.0.0.1:5000/api/board-favourites",
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -97,12 +95,8 @@ export default {
           },
         })
         .then((response) => {
-          this.boardLikes = response.data;
-          this.likesAmount = this.boardLikes.length;
-          this.isLiked =
-            this.boardLikes.filter((boardLike) => {
-              return boardLike.userId == this.userId;
-            }).length == 1;
+          this.boardFaves = response.data;
+          this.isFaved = false
         })
         .catch((error) => {
           console.log(error);
