@@ -1,10 +1,10 @@
 <template>
   <div>
     <div id="likes-text">Likes: {{ likesAmount }}</div>
-    <button v-if="!isLiked && userId != ownerId" @click="likeBoard()">
+    <button v-if="!isLiked && userId != ownerId && showButton" @click="likeBoard()">
       Like Board
     </button>
-    <button v-if="isLiked && userId != ownerId" @click="unlikeBoard()">
+    <button v-if="isLiked && userId != ownerId && showButton" @click="unlikeBoard()">
       Unlike Board
     </button>
   </div>
@@ -36,6 +36,10 @@ export default {
     ownerId: {
       type: Number,
     },
+    showButton: {
+      type: Boolean,
+      default: true,
+    }
   },
 
   methods: {

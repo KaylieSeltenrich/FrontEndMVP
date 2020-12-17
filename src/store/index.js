@@ -125,6 +125,5 @@ export default new Vuex.Store({
     getUsersBoards: function(state) {
       return state.boards.filter(function(board) { return state.userId == board.userId })
     },
-
   }
 });

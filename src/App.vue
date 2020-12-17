@@ -7,6 +7,7 @@
       <router-link class="link" to="/create">Create</router-link>
       <router-link class="link" to="/profile">Profile</router-link>
       <router-link class="link" to="/favourites">Favourites</router-link>
+      <router-link class="link" to="/mostliked">Most Liked</router-link>
     </div>
     <div id="logout" v-if="loginToken != undefined">
       <logout> </logout>
