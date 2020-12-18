@@ -28,4 +28,13 @@
 #searchbutton{
     height:3vh;
 }
+
+@media (max-width: 600px) {
+#searchbar{
+    height:3vh;
+    width: 30vw;
+    font-size: 1.2em;
+    margin-bottom: 5%;
+}
+}
 </style>

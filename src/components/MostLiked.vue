@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 id="title"> Most Liked Boards of the Month: </h1>
     <div id="page-container">
       <div v-for="mostBoardLike in mostBoardLikes" :key="mostBoardLike">
         <h2 class="boardtitle">Username:</h2>
@@ -78,10 +79,10 @@
           >
             {{ mostBoardLike[15] }}
           </div>
-          <h2>Created at:</h2>
+          <h2 class="boardtitle">Created at:</h2>
           {{ mostBoardLike[4] }}
         </div>
-        <board-likes :showButton="false" :boardId="mostBoardLike[1]"> </board-likes>
+                  <board-likes id="likes" :showButton="false" :boardId="mostBoardLike[1]"> </board-likes>
       </div>
     </div>
     <button v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
@@ -156,5 +157,53 @@ export default {
 .boardtitle {
   font-size: 1em;
   margin: 0;
+}
+
+#title{
+  display: block;
+}
+
+
+@media (max-width: 600px) {
+  .fill {
+    width: 100%;
+    height: 100%;
+  }
+  #container {
+    height: 50vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #page-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    text-align: center;
+    justify-items: center;
+  }
+  #image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .boardtitle {
+    font-size: 1em;
+    margin: 2%;
+  }
+
+  #likes{
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5vh;
+
+  }
+
+  #title{
+    font-size: 1.8em;
+  }
 }
 </style>

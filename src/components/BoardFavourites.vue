@@ -1,5 +1,6 @@
 <template>
   <div>
+    <br/>
     <button v-if="!isFaved" @click="faveBoard()">
       Favourite Board
     </button>

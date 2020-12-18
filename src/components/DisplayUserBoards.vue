@@ -78,8 +78,12 @@
           >
             {{ board.colour10 }}
           </div>
-          <h2>Created at:</h2>
+          <h2 class="boardtitle">Created at:</h2>
           {{ board.createdAt }}
+        </div>
+        <board-likes id="likes" :ownerId="board.userId" :boardId="board.id">
+        </board-likes>
+        <div id="button-container">
           <button @click="deleteBoard(board.id)">Delete Board</button> <br />
           <input type="text" v-model="title" /><button
             @click="updateTitle(board.id)"
@@ -87,7 +91,6 @@
             Update Board Title
           </button>
         </div>
-        <board-likes :ownerId="board.userId" :boardId="board.id"> </board-likes>
       </div>
     </div>
     <button v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
@@ -208,5 +211,49 @@ export default {
 .boardtitle {
   font-size: 1em;
   margin: 0;
+}
+
+@media (max-width: 600px) {
+  .fill {
+    width: 100%;
+    height: 100%;
+  }
+  #container {
+    height: 50vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #page-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    text-align: center;
+    justify-items: center;
+  }
+  #image {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .boardtitle {
+    font-size: 1em;
+    margin: 2%;
+  }
+
+  #likes {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5vh;
+  }
+
+  #button-container{
+  display: grid;
+  grid-template-columns: 1fr;
+  }
+  
 }
 </style>
