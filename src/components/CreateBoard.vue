@@ -32,7 +32,7 @@ data() {
     createBoard: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/boards",
+          url: "https://inspo.ml/api/boards",
           method: "POST",
           data: {
               title: this.title,

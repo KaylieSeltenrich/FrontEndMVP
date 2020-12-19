@@ -23,7 +23,7 @@ export default {
     logOut: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/login",
+          url: "https://inspo.ml/api/login",
           method: "DELETE",
           data: {
             loginToken: this.loginToken

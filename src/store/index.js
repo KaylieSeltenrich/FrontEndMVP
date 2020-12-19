@@ -58,7 +58,7 @@ export default new Vuex.Store({
      getAllBoards: function(context,offset) {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/boards",
+          url: "https://inspo.ml/api/boards",
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -79,7 +79,7 @@ export default new Vuex.Store({
     getFavouriteBoards: function(context,offset) {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/board-favourites",
+          url: "https://inspo.ml/api/board-favourites",
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -102,7 +102,7 @@ export default new Vuex.Store({
     getUserBoards: function(context,offset) {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/boards",
+          url: "https://inspo.ml/api/boards",
           method: "GET",
           headers: {
             "Content-Type": "application/json",

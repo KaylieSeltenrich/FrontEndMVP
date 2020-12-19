@@ -153,7 +153,7 @@ export default {
     unfaveBoard: function(boardId, button) {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/board-favourites",
+          url: "https://inspo.ml/api/board-favourites",
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

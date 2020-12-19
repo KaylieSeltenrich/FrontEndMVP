@@ -41,7 +41,7 @@ export default {
     getFaves: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/all-faves",
+          url: "https://inspo.ml/api/all-faves",
           method: "GET",
           params: {
             boardId: this.boardId,
@@ -63,7 +63,7 @@ export default {
     faveBoard: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/board-favourites",
+          url: "https://inspo.ml/api/board-favourites",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export default {
     unfaveBoard: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/board-favourites",
+          url: "https://inspo.ml/api/board-favourites",
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

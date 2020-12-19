@@ -30,7 +30,7 @@ export default {
     signupUser: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/users",
+          url: "https://inspo.ml/api/users",
           method: "POST",
           data: {
             email: this.email,

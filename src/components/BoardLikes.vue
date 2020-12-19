@@ -54,7 +54,7 @@ export default {
     getLikes: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/board-likes",
+          url: "https://inspo.ml/api/board-likes",
           method: "GET",
           params: {
             boardId: this.boardId,
@@ -76,7 +76,7 @@ export default {
     likeBoard: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/board-likes",
+          url: "https://inspo.ml/api/board-likes",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export default {
     unlikeBoard: function() {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/board-likes",
+          url: "https://inspo.ml/api/board-likes",
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

@@ -33,7 +33,7 @@ export default {
       this.loginStatus = "Loading";
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/login",
+          url: "https://inspo.ml/api/login",
           method: "POST",
           data: {
             email: this.email,
