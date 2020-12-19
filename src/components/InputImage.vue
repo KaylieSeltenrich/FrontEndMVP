@@ -42,4 +42,19 @@ button{
 }
 }
 
+
+@media (min-width: 1024px) {
+input{
+    height:5vh;
+    width: 35vw;
+    font-size: 1.2em;
+    margin-bottom: 5%;
+}
+
+button{
+  height: 5vh;
+  font-weight: bold;
+}
+}
+
 </style>

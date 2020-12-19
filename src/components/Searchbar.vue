@@ -18,12 +18,6 @@
 </script>
 
 <style lang="css" scoped>
-#searchbar{
-    height:3vh;
-    width: 10vw;
-    font-size: 1.2em;
-    margin-bottom: 5%;
-}
 
 #searchbutton{
     height:3vh;
@@ -48,6 +42,21 @@
 
 #searchbutton {
     height: 3.5vh;
+}
+}
+
+@media (min-width: 1024px) {
+#searchbar{
+    height:4vh;
+    width: 30vw;
+    font-size: 1.2em;
+    margin-bottom: 5%;
+}
+
+#searchbutton {
+    height: 5vh;
+    width: 5vw;
+    font-weight: bold;
 }
 }
 </style>

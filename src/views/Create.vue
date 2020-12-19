@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!loginToken">
+    <div id="error" v-if="!loginToken">
       <h1>Oops!</h1>
       <h3>
         You appear to not be logged in. Please either log in or signup to acess
@@ -56,6 +56,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#error {
+  min-height: 50vh;
+  margin-top: 4%;
+}
 
 @media (max-width: 767px) {
   #title {
@@ -68,6 +72,26 @@ export default {
   #title {
     font-size: 2.5em;
     font-family: "Indie Flower", cursive;
+  }
+  }
+
+  @media (min-width: 1024px) {
+  #title {
+    font-size: 3.5em;
+    font-family: "Indie Flower", cursive;
+    margin: 0;
+    margin-top: 5%;
+    position: relative;
+    bottom: 10vh;
+  }
+p {
+  position: relative;
+  bottom: 10vh;
+  font-size: 1.3em;
+}
+  div{
+    width: 80%;
+    margin-left: 10%;
   }
   }
 </style>

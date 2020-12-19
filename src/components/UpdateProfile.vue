@@ -18,7 +18,6 @@
         <h1>Delete account:</h1>
         <p>Password:</p>
         <input type="password" v-model="deletepassword" />
-
         <button class="button" v-if="!showDelete" @click="showDelete = true">
           Delete
         </button>
@@ -174,6 +173,51 @@ export default {
     width: 100%;
     border: none;
     margin-top: 8vh;
+  }
+}
+
+@media (min-width: 1024px) {
+ 
+  #profile-info {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+    margin-left: 15%;
+  }
+
+  p{
+    font-size: 1.4em;
+  }
+  h1 {
+    font-size: 2em;
+  }
+
+  input {
+    width: 70%;
+    height: 3vh;
+  }
+
+  button {
+    margin-top: 10%;
+    width: 5vw;
+    height: 3.5vh;
+    font-weight: bold;
+    font-size: 1em;
+  }
+
+  #updatebutton {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0.5%;
+    height: 5vh;
+    width: 50%;
+    margin-left: 25%;
+    border: none;
+    margin-top: 0;
+    margin-bottom: 2%;
+    box-shadow: 5px 10px #888888;
   }
 }
 </style>

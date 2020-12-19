@@ -29,7 +29,7 @@
     <router-view />
     <div id="footer">
       Website Created By Kaylie Seltenrich <br />
-      <a href="https://www.pexels.com">Photos provided by Pexels |</a>
+      <a href="https://www.pexels.com">Photos provided by Pexels </a>
       <a href="https://lokeshdhakar.com/projects/color-thief/"
         >  Pallette generator created using Color Thief</a
       >
@@ -179,6 +179,7 @@ export default {
 }
 
 /* TABLET */
+
 @media only screen and (min-width: 768px){
   #logo {
     width: 70%;
@@ -242,6 +243,94 @@ export default {
   #footer a:hover {
     color: rgb(61, 61, 61);
   }
+
+#signedout-nav {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  margin-top: 5%;
+}
 }
 
+/* DESKTOP */
+
+@media only screen and (min-width: 1024px){
+  #logo {
+    width: 30%;
+    margin-bottom: 2%;
+  }
+
+  #hamburger {
+    position: absolute;
+    top: 0vh;
+    left: 0;
+    height: 8vh;
+    width: 10vw;
+    margin: 5%;
+  }
+
+  #nav {
+    display: none;
+    position: relative;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 0;
+    width: 100%;
+    top: 0;
+    margin: 0;
+    margin-bottom: 5%;
+  }
+
+  .link {
+    display: grid;
+    text-decoration: none;
+    border: none;
+    margin: 10%;
+    padding: 0;
+    background-color: rgb(235, 235, 235);
+    height: 100%;
+    align-self: start;
+    align-items: center;
+    font-size: 1.2em;
+  }
+
+  #logout {
+    position: absolute;
+    top: 10vh;
+    right: 5vw;
+  }
+
+  #footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 20vh;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: rgb(240, 238, 238);
+  }
+
+  #footer a:link {
+    color: grey;
+  }
+  #footer a:visited {
+    color: grey;
+  }
+  #footer a:hover {
+    color: rgb(61, 61, 61);
+  }
+
+#signedout-nav {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5%;
+  margin-left: 35%;
+  margin-right: 35%;
+  width: 30%;
+  margin-top: 0;
+}
+
+}
 </style>

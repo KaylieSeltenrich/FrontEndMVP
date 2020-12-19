@@ -60,4 +60,41 @@ p{
   font-weight: bold;
   font-size: 1.2em;
 }
+
+
+@media only screen and (min-width: 768px) {
+p{ 
+  font-weight: bold;
+  font-size: 1.6em;
+}
+input{
+  height: 3vh;
+  width: 50%;
+  font-size: 1.2em;
+}
+button{
+  height: 4vh;
+  width: 20%;
+  font-weight: bold;
+}
+}
+
+@media only screen and (min-width: 1024px) {
+p{ 
+  font-weight: bold;
+  font-size: 1.6em;
+}
+input{
+  height: 3vh;
+  width: 50%;
+  font-size: 1.2em;
+}
+button{
+  height: 4vh;
+  width: 20%;
+  font-weight: bold;
+}
+}
+
+
 </style>

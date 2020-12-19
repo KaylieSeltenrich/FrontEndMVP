@@ -90,21 +90,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.pallettecolor {
-  display: inline-block;
-  height: 10vh;
-}
+
 .fill {
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
   height: 100%;
 }
-.image {
-  width: 500px;
-  height: 400px;
-  object-fit: cover;
-}
+
 
 @media (max-width: 767px) {
   .image {
@@ -114,12 +107,12 @@ export default {
   }
   .pallettecolor {
   display: inline-block;
-  height: 8vh;
+  height: 4vh;
   width: 50%;
 }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .image {
     width: 550px;
     height: 500px;
@@ -129,6 +122,19 @@ export default {
   display: inline-block;
   height: 7vh;
   width: 35%;
+}
+}
+
+@media (min-width: 1024px) {
+  .image {
+    width: 650px;
+    height: 650px;
+    object-fit: cover;
+  }
+  .pallettecolor {
+  display: inline-block;
+  height: 8vh;
+  width: 45%;
 }
 }
 

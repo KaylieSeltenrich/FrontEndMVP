@@ -67,4 +67,20 @@ button:hover{
 }
 }
 
+
+@media (min-width: 1024px) {
+button {
+
+  font-size: 1.2em;
+  background-color:rgb(156, 156, 156);
+  color: white;
+  height: 8vh;
+  width: 15vw;
+ 
+}
+button:hover{
+  background-color: rgb(104, 104, 104);
+}
+}
+
 </style>

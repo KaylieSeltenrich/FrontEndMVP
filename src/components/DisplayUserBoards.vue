@@ -204,62 +204,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.fill {
-  width: 100%;
-  height: 100%;
-}
-#container {
-  height: 50vh;
-  width: 30vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-#page-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-content: center;
-  text-align: center;
-  justify-items: center;
-}
-#image {
-  width: 500px;
-  height: 500px;
-  object-fit: cover;
-}
-
-.boardtitle {
-  font-size: 1em;
-  margin: 0;
-}
-
-#title {
-  font-size: 1.8em;
-  font-family: "Indie Flower", cursive;
-}
-
-#previouspage,
-#nextpage {
-  font-size: 1.2em;
-  background-color: rgb(235, 235, 235);
-  color: black;
-  border: none;
-  padding: 3%;
-  margin-left: 5vw;
-  box-shadow: 2px 2px 5px 2px #000000;
-  margin-top: 10vh;
-}
-
-#previouspage:hover,
-#nextpage:hover {
-  color: #b2adb7;
-}
-
-#board-container {
-  border: ridge 3px white;
-  box-shadow: 1px 1px 10px 1px black;
-  padding: 5%;
-  margin-bottom: 50px;
-}
 
 @media (max-width: 767px) {
   .fill {
@@ -400,6 +344,70 @@ export default {
     box-shadow: 2px 2px 5px 2px #000000;
     margin-bottom: 5%;
     margin-top: 0;
+  }
+  #previouspage:hover,
+  #nextpage:hover {
+    color: #b2adb7;
+  }
+
+  #board-container {
+    border: ridge 3px white;
+    box-shadow: 1px 1px 10px 1px black;
+    padding: 5%;
+    margin-bottom: 50px;
+    width: 90%;
+  }
+}
+
+
+/* DESKTOP */
+
+@media only screen and (min-width: 1024px) {
+  .fill {
+    width: 100%;
+    height: 100%;
+  }
+  #container {
+    height: 45vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5%;
+    width: 85%;
+    margin-left: 8%;
+  }
+
+  #image {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .boardtitle {
+    font-size: 1.3em;
+    margin: 2%;
+  }
+
+  #title {
+    font-size: 3.5em;
+    font-family: "Indie Flower", cursive;
+    margin-top: 0;
+  }
+
+  #previouspage,
+  #nextpage {
+    font-size: 1.2em;
+    background-color: rgb(235, 235, 235);
+    color: black;
+    border: none;
+    padding: 3%;
+    margin-left: 5vw;
+    box-shadow: 2px 2px 5px 2px #000000;
+    margin-bottom: 5%;
   }
   #previouspage:hover,
   #nextpage:hover {

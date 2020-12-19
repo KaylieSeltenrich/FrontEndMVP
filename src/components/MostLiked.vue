@@ -162,61 +162,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.fill {
-  width: 100%;
-  height: 100%;
-}
-#container {
-  height: 50vh;
-  width: 30vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-#page-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-content: center;
-  text-align: center;
-  justify-items: center;
-}
-#image {
-  width: 500px;
-  height: 500px;
-  object-fit: cover;
-}
-
-.boardtitle {
-  font-size: 1em;
-  margin: 0;
-}
-
-#title {
-  display: block;
-  margin-top: 6vh;
-}
-
-#previouspage,
-#nextpage {
-  font-size: 1.2em;
-  background-color: rgb(235, 235, 235);
-  color: black;
-  border: none;
-  padding: 3%;
-  margin-left: 5vw;
-  box-shadow: 2px 2px 5px 2px #000000;
-  margin-top: 10vh;
-}
-#previouspage:hover,
-#nextpage:hover {
-  color: #b2adb7;
-}
-
-#board-container {
-  border: ridge 3px white;
-  box-shadow: 1px 1px 10px 1px black;
-  padding: 5%;
-  margin-bottom: 50px;
-}
 
 @media (max-width: 767px) {
   .fill {
@@ -285,10 +230,8 @@ export default {
   }
 }
 
-
-
-
 /* TABLET */
+
 @media only screen and (min-width: 768px) {
   .fill {
     width: 100%;
@@ -320,6 +263,83 @@ export default {
 
   #title {
     font-size: 2.5em;
+    font-family: "Indie Flower", cursive;
+    margin-top: 6vh;
+  }
+
+  #previouspage,
+  #nextpage {
+    font-size: 1.2em;
+    background-color: rgb(235, 235, 235);
+    color: black;
+    border: none;
+    padding: 3%;
+    margin-left: 5vw;
+    box-shadow: 2px 2px 5px 2px #000000;
+    margin-bottom: 5%;
+    margin-top: 0;
+  }
+  #previouspage:hover,
+  #nextpage:hover {
+    color: #b2adb7;
+  }
+
+  #board-container {
+    border: ridge 3px white;
+    box-shadow: 1px 1px 10px 1px black;
+    padding: 5%;
+    margin-bottom: 50px;
+    width: 90%;
+  }
+
+  #likes{
+    font-size: 2em;
+  }
+
+  #subtitle{
+    font-size: 1.5em;
+    margin: 0;
+    margin-top: 2%;
+  }
+}
+
+
+
+/* DESKTOP */
+
+@media only screen and (min-width: 1024px) {
+  .fill {
+    width: 100%;
+    height: 100%;
+  }
+  #container {
+    height: 40vh;
+    width: 70%;
+    margin-left: 15%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5%;
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  #image {
+    width: 600px;
+    height: 600px;
+    object-fit: cover;
+  }
+
+  .boardtitle {
+    font-size: 1.8em;
+    margin: 2%;
+  }
+
+  #title {
+    font-size: 3.5em;
     font-family: "Indie Flower", cursive;
     margin-top: 3vh;
   }

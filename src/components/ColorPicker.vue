@@ -21,11 +21,7 @@ computed: {
 </script>
 
 <style lang="css" scoped>
-#image-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    object-fit: contain;
-}
+
 
 @media (max-width: 767px) {
 
@@ -42,6 +38,19 @@ computed: {
     display: grid;
     grid-template-columns: 1fr;
     object-fit: contain;
+}
+
+}
+
+@media (min-width: 1024px) {
+
+#image-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 5%;
+    margin: 0;
+    object-fit: contain;
+    align-content: center;
 }
 
 }

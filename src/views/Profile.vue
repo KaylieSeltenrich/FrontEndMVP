@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!loginToken">
+    <div id="error" v-if="!loginToken">
       <h1>Oops!</h1>
       <h3>
         You appear to not be logged in. Please either log in or signup to acess
@@ -32,3 +32,9 @@ export default {
   },
 };
 </script>
+<style lang="css" scoped>
+#error {
+  min-height: 50vh;
+  margin-top: 4%;
+}
+</style>
