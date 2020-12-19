@@ -208,7 +208,7 @@ export default {
 #title {
   font-size: 1.8em;
   font-family: "Indie Flower", cursive;
-  margin-top: 10vh;
+  margin-top: 6vh;
 }
 
 #previouspage,
@@ -290,19 +290,18 @@ export default {
   #title {
     font-size: 1.8em;
     font-family: "Indie Flower", cursive;
-    margin-top: 10vh;
   }
 
   #previouspage,
   #nextpage {
-    font-size: 1.2em;
+   font-size: 1.2em;
     background-color: rgb(235, 235, 235);
     color: black;
     border: none;
     padding: 3%;
     margin-left: 5vw;
     box-shadow: 2px 2px 5px 2px #000000;
-    margin-top: 10vh;
+    margin-top: 0;
   }
   #previouspage:hover,
   #nextpage:hover {

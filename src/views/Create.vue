@@ -56,12 +56,15 @@ export default {
 </script>
 
 <style lang="css" scoped>
- #title {
+
+@media (max-width: 767px) {
+  #title {
     font-size: 1.8em;
     font-family: "Indie Flower", cursive;
   }
+  }
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
   #title {
     font-size: 2.5em;
     font-family: "Indie Flower", cursive;

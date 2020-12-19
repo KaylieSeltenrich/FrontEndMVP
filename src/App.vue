@@ -29,9 +29,9 @@
     <router-view />
     <div id="footer">
       Website Created By Kaylie Seltenrich <br />
-      <a href="https://www.pexels.com">Photos provided by Pexels</a>
+      <a href="https://www.pexels.com">Photos provided by Pexels |</a>
       <a href="https://lokeshdhakar.com/projects/color-thief/"
-        >Pallette generator created using Color Thief</a
+        >  Pallette generator created using Color Thief</a
       >
     </div>
   </div>
@@ -81,16 +81,6 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
-  display: none;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 5%;
-  margin-left: 10%;
-  margin-right: 10%;
-  width: 80%;
-  margin-top: 5%;
-}
-
 #signedout-nav {
   display: none;
   grid-template-columns: 1fr 1fr;
@@ -119,19 +109,15 @@ export default {
   color: #b2adb7;
 }
 
-.link {
-  margin: 10%;
-  border: 1px solid rgb(131, 131, 131);
-  padding: 5%;
-  text-decoration: none;
-}
-
 #hamburger {
   position: fixed;
   top: 0;
   left: 0;
   margin: 5%;
 }
+
+
+/* PHONE*/
 
 @media (max-width: 767px) {
   #logo {
@@ -257,4 +243,5 @@ export default {
     color: rgb(61, 61, 61);
   }
 }
+
 </style>

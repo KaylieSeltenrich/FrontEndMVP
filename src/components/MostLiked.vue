@@ -192,6 +192,7 @@ export default {
 
 #title {
   display: block;
+  margin-top: 6vh;
 }
 
 #previouspage,
@@ -257,7 +258,6 @@ export default {
   #title {
     font-size: 1.8em;
     font-family: "Indie Flower", cursive;
-    margin-top: 10vh;
   }
 
   #previouspage,
@@ -269,7 +269,7 @@ export default {
     padding: 3%;
     margin-left: 5vw;
     box-shadow: 2px 2px 5px 2px #000000;
-    margin-top: 10vh;
+    margin-top: 0vh;
     
   }
   #previouspage:hover,

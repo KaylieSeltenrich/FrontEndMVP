@@ -142,6 +142,7 @@ export default {
     width: 100%;
     border: none;
     margin-top: 8vh;
+    height: 10vh;
   }
 }
 

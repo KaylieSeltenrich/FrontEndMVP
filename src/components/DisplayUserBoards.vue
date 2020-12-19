@@ -329,7 +329,7 @@ export default {
     padding: 3%;
     margin-left: 5vw;
     box-shadow: 2px 2px 5px 2px #000000;
-    margin-top: 10vh;
+    margin-top: 0;
   }
   #previouspage:hover,
   #nextpage:hover {

@@ -180,7 +180,7 @@ export default {
 #title {
   font-size: 1.8em;
   font-family: "Indie Flower", cursive;
-  margin-top: 10vh;
+  margin-top: 6vh;
 }
 
 #previouspage,
@@ -231,7 +231,6 @@ export default {
   #title {
     font-size: 1.8em;
     font-family: "Indie Flower", cursive;
-    margin-top: 10vh;
   }
 
   #previouspage,
