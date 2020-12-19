@@ -27,7 +27,16 @@ computed: {
     object-fit: contain;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
+
+#image-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    object-fit: contain;
+}
+}
+
+@media (max-width: 768px) {
 
 #image-container {
     display: grid;

@@ -117,7 +117,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   #profile-info {
     display: none;
     grid-template-columns: 1fr 1fr;
@@ -156,10 +156,12 @@ export default {
 
   input {
     width: 70%;
+    height: 2vh;
   }
 
   button {
     margin-top: 10%;
+    height: 3vh;
   }
 
   #updatebutton {

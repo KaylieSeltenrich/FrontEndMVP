@@ -2,7 +2,10 @@
   <div>
     <h1 id="title">Your Favourited Boards:</h1>
     <div id="page-container">
-      <div id="board-container" v-for="board in faveBoards" :key="board.id">
+        <div v-if="faveBoards.length == 0">
+        Sorry! No boards here. Please go to previous page.
+      </div>
+      <div v-else id="board-container" v-for="board in faveBoards" :key="board.id">
         <h2 class="boardtitle">Username:</h2>
         <p style="font-size:1.2em; margin:0">{{ board.username }}</p>
         <h2 class="boardtitle">Title:</h2>
@@ -91,14 +94,14 @@
           :boardId="board.boardId"
         >
         </board-likes>
-        <button id="unfave" @click="unfaveBoard(board.boardId)">
+        <button id="unfave" @click="unfaveBoard(board.boardId, $event.currentTarget)">
           UnFavourite Board
         </button>
       </div>
     </div>
     <button id="previouspage" v-if="offset != 0" @click="PreviousBoards()">
       Previous Page</button
-    ><button id="nextpage" @click="NextBoards()">Next Page</button>
+    ><button id="nextpage" v-if="faveBoards.length == 6" @click="NextBoards()">Next Page</button>
   </div>
 </template>
 
@@ -147,7 +150,7 @@ export default {
       this.$store.dispatch("getFavouriteBoards", this.offset);
     },
 
-    unfaveBoard: function(boardId) {
+    unfaveBoard: function(boardId, button) {
       axios
         .request({
           url: "http://127.0.0.1:5000/api/board-favourites",
@@ -163,7 +166,7 @@ export default {
         .then((response) => {
           this.boardFaves = response.data;
           this.isFaved = false;
-          document.getElementById("unfave").innerHTML = "Success!";
+          button.innerHTML = "Success!";
         })
         .catch((error) => {
           console.log(error);
@@ -247,7 +250,7 @@ export default {
   margin-top: 12%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .fill {
     width: 100%;
     height: 100%;
@@ -360,7 +363,7 @@ export default {
   }
 
   #title {
-    font-size: 1.8em;
+    font-size: 2.5em;
     font-family: "Indie Flower", cursive;
     margin-top: 3vh;
   }
@@ -374,6 +377,8 @@ export default {
     padding: 3%;
     margin-left: 5vw;
     box-shadow: 2px 2px 5px 2px #000000;
+    margin-bottom: 5%;
+    margin-top: 0;
   }
   #previouspage:hover,
   #nextpage:hover {

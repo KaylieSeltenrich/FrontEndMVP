@@ -106,7 +106,7 @@ export default {
   object-fit: cover;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .image {
     width: 300px;
     height: 300px;
@@ -118,4 +118,18 @@ export default {
   width: 50%;
 }
 }
+
+@media (max-width: 768px) {
+  .image {
+    width: 550px;
+    height: 500px;
+    object-fit: cover;
+  }
+  .pallettecolor {
+  display: inline-block;
+  height: 7vh;
+  width: 35%;
+}
+}
+
 </style>

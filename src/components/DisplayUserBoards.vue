@@ -2,7 +2,15 @@
   <div>
     <h1 id="title">Your Boards:</h1>
     <div id="page-container">
-      <div id="board-container" v-for="board in userBoards" :key="board.id">
+      <div v-if="userBoards.length == 0">
+        Sorry! No boards here. Please go to previous page.
+      </div>
+      <div
+        v-else
+        id="board-container"
+        v-for="board in userBoards"
+        :key="board.id"
+      >
         <h2 class="boardtitle">Username:</h2>
         <p style="font-size:1.2em; margin:0">{{ board.username }}</p>
         <h2 class="boardtitle">Title:</h2>
@@ -103,7 +111,9 @@
     </div>
     <button id="previouspage" v-if="offset != 0" @click="PreviousBoards()">
       Previous Page</button
-    ><button id="nextpage" @click="NextBoards()">Next Page</button>
+    ><button id="nextpage" v-if="userBoards.length == 6" @click="NextBoards()">
+      Next Page
+    </button>
   </div>
 </template>
 
@@ -238,6 +248,7 @@ export default {
   box-shadow: 2px 2px 5px 2px #000000;
   margin-top: 10vh;
 }
+
 #previouspage:hover,
 #nextpage:hover {
   color: #b2adb7;
@@ -250,7 +261,7 @@ export default {
   margin-bottom: 50px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .fill {
     width: 100%;
     height: 100%;
@@ -373,7 +384,7 @@ export default {
   }
 
   #title {
-    font-size: 1.8em;
+    font-size: 2.5em;
     font-family: "Indie Flower", cursive;
     margin-top: 3vh;
   }
@@ -387,6 +398,8 @@ export default {
     padding: 3%;
     margin-left: 5vw;
     box-shadow: 2px 2px 5px 2px #000000;
+    margin-bottom: 5%;
+    margin-top: 0;
   }
   #previouspage:hover,
   #nextpage:hover {

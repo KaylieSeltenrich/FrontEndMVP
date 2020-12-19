@@ -133,7 +133,7 @@ export default {
   margin: 5%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   #logo {
     width: 100%;
     margin-bottom: 5%;
@@ -195,7 +195,7 @@ export default {
 /* TABLET */
 @media only screen and (min-width: 768px){
   #logo {
-    width: 80%;
+    width: 70%;
     margin-bottom: 5%;
   }
 
@@ -222,7 +222,7 @@ export default {
     display: grid;
     text-decoration: none;
     border: none;
-    margin: 5%;
+    margin: 10%;
     padding: 0;
     background-color: rgb(235, 235, 235);
     height: 100%;

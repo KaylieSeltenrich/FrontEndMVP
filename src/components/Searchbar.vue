@@ -29,12 +29,25 @@
     height:3vh;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
 #searchbar{
     height:3vh;
     width: 30vw;
     font-size: 1.2em;
     margin-bottom: 5%;
+}
+}
+
+@media (max-width: 768px) {
+#searchbar{
+    height:3vh;
+    width: 30vw;
+    font-size: 1.2em;
+    margin-bottom: 5%;
+}
+
+#searchbutton {
+    height: 3.5vh;
 }
 }
 </style>

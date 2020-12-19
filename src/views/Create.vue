@@ -15,7 +15,7 @@
         You can either: <br />
         -Search for an image based on any search query you wish. You can
         re-click the search button to get another randomized set of images every
-        time.<br />
+        time. Keep search terms simple and one word otherwise you may not recieve any images back.<br />
         -Submit your own image url. Submitting your own image works best with
         imgur links to avoid CORS issues. <br />
         <br />
@@ -57,7 +57,14 @@ export default {
 
 <style lang="css" scoped>
  #title {
-    font-size: 2em;
+    font-size: 1.8em;
     font-family: "Indie Flower", cursive;
+  }
+
+  @media (max-width: 768px) {
+  #title {
+    font-size: 2.5em;
+    font-family: "Indie Flower", cursive;
+  }
   }
 </style>

@@ -2,15 +2,19 @@
   <div>
     <h1 id="title">Most Liked Boards of the Month:</h1>
     <div id="page-container">
+      <div v-if="mostBoardLikes.length == 0">
+        Sorry! No boards here. Please go to previous page.
+      </div>
       <div
+        v-else
         id="board-container"
         v-for="mostBoardLike in mostBoardLikes"
         :key="mostBoardLike"
       >
         <h2 class="boardtitle">Username:</h2>
-        <p style="font-size:1.2em; margin:0">{{ mostBoardLike[0] }}</p>
+        <p id="subtitle">{{ mostBoardLike[0] }}</p>
         <h2 class="boardtitle">Title:</h2>
-        <p style="font-size:1.2em; margin:0">{{ mostBoardLike[2] }}</p>
+        <p id="subtitle">{{ mostBoardLike[2] }}</p>
         <br />
         <img id="image" v-bind:src="mostBoardLike[3]" />
         <div id="container">
@@ -85,7 +89,7 @@
             {{ mostBoardLike[15] }}
           </div>
           <h2 class="boardtitle">Created at:</h2>
-          <p style="font-size:1.1em; margin:0; align-self:start;">
+          <p id="subtitle">
             {{ mostBoardLike[4] }}
           </p>
         </div>
@@ -95,7 +99,7 @@
     </div>
     <button id="previouspage" v-if="offset != 0" @click="PreviousBoards()">
       Previous Page</button
-    ><button id="nextpage" @click="NextBoards()">Next Page</button>
+    ><button id="nextpage" v-if="mostBoardLikes.length == 6" @click="NextBoards()">Next Page</button>
   </div>
 </template>
 
@@ -213,66 +217,7 @@ export default {
   margin-bottom: 50px;
 }
 
-/* TABLET */
-@media only screen and (min-width: 768px) {
-  .fill {
-    width: 100%;
-    height: 100%;
-  }
-  #container {
-    height: 35vh;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  #page-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    column-gap: 10px;
-    width: 100%;
-  }
-
-  #image {
-    width: 650px;
-    height: 650px;
-    object-fit: cover;
-  }
-
-  .boardtitle {
-    font-size: 1.3em;
-    margin: 2%;
-  }
-
-  #title {
-    font-size: 1.8em;
-    font-family: "Indie Flower", cursive;
-    margin-top: 3vh;
-  }
-
-  #previouspage,
-  #nextpage {
-    font-size: 1.2em;
-    background-color: rgb(235, 235, 235);
-    color: black;
-    border: none;
-    padding: 3%;
-    margin-left: 5vw;
-    box-shadow: 2px 2px 5px 2px #000000;
-  }
-  #previouspage:hover,
-  #nextpage:hover {
-    color: #b2adb7;
-  }
-
-  #board-container {
-    border: ridge 3px white;
-    box-shadow: 1px 1px 10px 1px black;
-    padding: 5%;
-    margin-bottom: 50px;
-    width: 90%;
-  }
-}
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .fill {
     width: 100%;
     height: 100%;
@@ -325,6 +270,7 @@ export default {
     margin-left: 5vw;
     box-shadow: 2px 2px 5px 2px #000000;
     margin-top: 10vh;
+    
   }
   #previouspage:hover,
   #nextpage:hover {
@@ -339,4 +285,78 @@ export default {
   }
 }
 
+
+
+
+/* TABLET */
+@media only screen and (min-width: 768px) {
+  .fill {
+    width: 100%;
+    height: 100%;
+  }
+  #container {
+    height: 35vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #page-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 10px;
+    width: 100%;
+  }
+
+  #image {
+    width: 550px;
+    height: 550px;
+    object-fit: cover;
+  }
+
+  .boardtitle {
+    font-size: 1.8em;
+    margin: 2%;
+  }
+
+  #title {
+    font-size: 2.5em;
+    font-family: "Indie Flower", cursive;
+    margin-top: 3vh;
+  }
+
+  #previouspage,
+  #nextpage {
+    font-size: 1.2em;
+    background-color: rgb(235, 235, 235);
+    color: black;
+    border: none;
+    padding: 3%;
+    margin-left: 5vw;
+    box-shadow: 2px 2px 5px 2px #000000;
+    margin-bottom: 5%;
+    margin-top: 0;
+  }
+  #previouspage:hover,
+  #nextpage:hover {
+    color: #b2adb7;
+  }
+
+  #board-container {
+    border: ridge 3px white;
+    box-shadow: 1px 1px 10px 1px black;
+    padding: 5%;
+    margin-bottom: 50px;
+    width: 90%;
+  }
+
+  #likes{
+    font-size: 2em;
+  }
+
+  #subtitle{
+    font-size: 1.5em;
+    margin: 0;
+    margin-top: 2%;
+  }
+}
 </style>

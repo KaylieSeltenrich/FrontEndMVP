@@ -23,4 +23,23 @@ export default {
 </script>
 
 <style lang="css" scoped>
+@media only screen and (min-width: 768px) {
+  div {
+    margin-bottom: 5vh;
+  }
+}
+
+@media (max-width: 768px) {
+input{
+    height:3vh;
+    width: 30vw;
+    font-size: 1.2em;
+    margin-bottom: 5%;
+}
+
+button{
+  height: 3.5vh;
+}
+}
+
 </style>
