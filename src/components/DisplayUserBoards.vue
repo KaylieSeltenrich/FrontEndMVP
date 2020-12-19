@@ -2,11 +2,11 @@
   <div>
     <h1 id="title"> Your Boards: </h1>
     <div id="page-container">
-      <div v-for="board in userBoards" :key="board.id">
+      <div id="board-container" v-for="board in userBoards" :key="board.id">
         <h2 class="boardtitle">Username:</h2>
-        {{ board.username }}
+        <p style="font-size:1.2em; margin:0">{{ board.username }}</p>
         <h2 class="boardtitle">Title:</h2>
-        {{ board.title }} <br />
+         <p style="font-size:1.2em; margin:0">{{ board.title }}</p> <br />
         <img id="image" v-bind:src="board.image" />
         <div id="container">
           <div
@@ -80,7 +80,7 @@
             {{ board.colour10 }}
           </div>
           <h2 class="boardtitle">Created at:</h2>
-          {{ board.createdAt }}
+          <p style="font-size:1.1em; margin:0; align-self:start;">{{ board.createdAt }}</p>
         </div>
         <board-likes id="likes" :ownerId="board.userId" :boardId="board.id">
         </board-likes>
@@ -94,8 +94,8 @@
         </div>
       </div>
     </div>
-    <button v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
-    ><button @click="NextBoards()">Next Page</button>
+    <button id="previouspage" v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
+    ><button id="nextpage" @click="NextBoards()">Next Page</button>
   </div>
 </template>
 
@@ -219,6 +219,27 @@ export default {
     font-family: 'Indie Flower', cursive;
   }
 
+  #previouspage, #nextpage {
+  font-size: 1.2em;
+  background-color:rgb(235, 235, 235);
+  color: black;
+  border: none;
+  padding: 3%;
+  margin-left: 5vw;
+  box-shadow: 2px 2px 5px 2px #000000;
+  margin-top: 10vh;
+}
+#previouspage:hover, #nextpage:hover{
+  color: #b2adb7;
+}
+
+#board-container{
+  border: ridge 3px white;
+  box-shadow: 1px 1px 10px 1px black;
+  padding: 5%;
+  margin-bottom: 50px;
+}
+
 @media (max-width: 600px) {
   .fill {
     width: 100%;
@@ -276,6 +297,27 @@ export default {
     height:3vh;
     margin-bottom: 2vh;
   }
+
+  #previouspage, #nextpage {
+  font-size: 1.2em;
+  background-color:rgb(235, 235, 235);
+  color: black;
+  border: none;
+  padding: 3%;
+  margin-left: 5vw;
+  box-shadow: 2px 2px 5px 2px #000000;
+  margin-top: 10vh;
+}
+#previouspage:hover, #nextpage:hover{
+  color: #b2adb7;
+}
+
+#board-container{
+  border: ridge 3px white;
+  box-shadow: 1px 1px 10px 1px black;
+  padding: 5%;
+  margin-bottom: 50px;
+}
 
 }
 </style>

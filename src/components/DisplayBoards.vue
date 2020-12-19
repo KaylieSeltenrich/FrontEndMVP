@@ -2,11 +2,11 @@
   <div>
     <h1 id="title"> All Boards: </h1>
     <div id="page-container">
-      <div v-for="board in boards" :key="board.id">
+      <div id="board-container" v-for="board in boards" :key="board.id">
         <h2 class="boardtitle">Username:</h2>
-        {{ board.username }}
+        <p style="font-size:1.2em; margin:0">{{ board.username }}</p>
         <h2 class="boardtitle">Title:</h2>
-        {{ board.title }} <br />
+        <p style="font-size:1.2em; margin:0">{{ board.title }}</p> <br />
         <img id="image" v-bind:src="board.image" />
         <div id="container">
           <div
@@ -80,7 +80,7 @@
             {{ board.colour10 }}
           </div>
           <h2 class="boardtitle">Created at:</h2>
-          {{ board.createdAt }}
+          <p style="font-size:1.1em; margin:0; align-self:start;">{{ board.createdAt }}</p>
 
           <board-likes :ownerId="board.userId" :boardId="board.id">
           </board-likes>
@@ -213,7 +213,7 @@ export default {
   }
 
   .boardtitle {
-    font-size: 1em;
+    font-size: 1.3em;
     margin: 2%;
   }
 
@@ -234,6 +234,13 @@ export default {
 }
 #previouspage:hover, #nextpage:hover{
   color: #b2adb7;
+}
+
+#board-container{
+  border: ridge 3px white;
+  box-shadow: 1px 1px 10px 1px black;
+  padding: 5%;
+  margin-bottom: 50px;
 }
 }
 

@@ -1,10 +1,18 @@
 <template>
   <div>
     <div id="likes-text">Likes: {{ likesAmount }}</div>
-    <button v-if="!isLiked && userId != ownerId && showButton" @click="likeBoard()">
+    <button
+      id="like"
+      v-if="!isLiked && userId != ownerId && showButton"
+      @click="likeBoard()"
+    >
       Like Board
     </button>
-    <button v-if="isLiked && userId != ownerId && showButton" @click="unlikeBoard()">
+    <button
+      id="unlike"
+      v-if="isLiked && userId != ownerId && showButton"
+      @click="unlikeBoard()"
+    >
       Unlike Board
     </button>
   </div>
@@ -39,7 +47,7 @@ export default {
     showButton: {
       type: Boolean,
       default: true,
-    }
+    },
   },
 
   methods: {
@@ -116,4 +124,25 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+#like,
+#unlike {
+  display: grid;
+  grid-template-columns: 1fr;
+  font-size: 1.2em;
+  border: none;
+  background-color: rgb(156, 156, 156);
+  color: white;
+  margin-left: 10%;
+  width: 80%;
+  height: 46px;
+  align-self: start;
+  align-items: center;
+}
+
+#likes-text{
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 5%;
+}
+</style>

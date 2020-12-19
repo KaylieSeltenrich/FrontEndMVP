@@ -163,7 +163,6 @@ export default {
     border: none;
     margin: 5%;
     padding: 0;
-    align-self: center;
     background-color: rgb(235, 235, 235);
     height: 100%;
     align-self: start;

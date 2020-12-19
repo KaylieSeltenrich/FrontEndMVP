@@ -1,12 +1,12 @@
 <template>
   <div>
-     <h1 id="title"> Your Favourited Boards: </h1>
+    <h1 id="title">Your Favourited Boards:</h1>
     <div id="page-container">
-      <div v-for="board in faveBoards" :key="board.id">
+      <div id="board-container" v-for="board in faveBoards" :key="board.id">
         <h2 class="boardtitle">Username:</h2>
-        {{ board.username }}
+        <p style="font-size:1.2em; margin:0">{{ board.username }}</p>
         <h2 class="boardtitle">Title:</h2>
-        {{ board.title }} <br />
+        <p style="font-size:1.2em; margin:0">{{ board.title }}</p> <br />
         <img id="image" v-bind:src="board.image" />
         <div id="container">
           <div
@@ -80,17 +80,22 @@
             {{ board.colour10 }}
           </div>
           <h2 class="boardtitle">Created at:</h2>
-          {{ board.createdAt }}
+         <p style="font-size:1.1em; margin:0; align-self:start;"> {{ board.createdAt }} </p>
         </div>
-        <board-likes id="likes" :ownerId="board.userId" :boardId="board.boardId">
+        <board-likes
+          id="likes"
+          :ownerId="board.userId"
+          :boardId="board.boardId"
+        >
         </board-likes>
         <button id="unfave" @click="unfaveBoard(board.boardId)">
           UnFavourite Board
         </button>
       </div>
     </div>
-    <button v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
-    ><button @click="NextBoards()">Next Page</button>
+    <button id="previouspage" v-if="offset != 0" @click="PreviousBoards()">
+      Previous Page</button
+    ><button id="nextpage" @click="NextBoards()">Next Page</button>
   </div>
 </template>
 
@@ -189,15 +194,54 @@ export default {
 }
 
 .boardtitle {
-  font-size: 1em;
+  font-size: 1.3em;
   margin: 0;
 }
 
- #title{
-    font-size: 1.8em;
-    font-family: 'Indie Flower', cursive;
-    margin-top: 10vh;
-  }
+#title {
+  font-size: 1.8em;
+  font-family: "Indie Flower", cursive;
+  margin-top: 10vh;
+}
+
+#previouspage,
+#nextpage {
+  font-size: 1.2em;
+  background-color: rgb(235, 235, 235);
+  color: black;
+  border: none;
+  padding: 3%;
+  margin-left: 5vw;
+  box-shadow: 2px 2px 5px 2px #000000;
+  margin-top: 10vh;
+}
+
+#previouspage:hover,
+#nextpage:hover {
+  color: #b2adb7;
+}
+
+#board-container {
+  border: ridge 3px white;
+  box-shadow: 1px 1px 10px 1px black;
+  padding: 5%;
+  margin-bottom: 50px;
+}
+
+#unfave {
+  display: grid;
+  grid-template-columns: 1fr;
+  font-size: 1.2em;
+  border: none;
+  background-color: rgb(156, 156, 156);
+  color: white;
+  margin-left: 10%;
+  width: 80%;
+  height: 46px;
+  align-self: start;
+  align-items: center;
+  margin-top: 12%;
+}
 
 @media (max-width: 600px) {
   .fill {
@@ -236,10 +280,48 @@ export default {
     margin-bottom: 5vh;
   }
 
-   #title{
+  #title {
     font-size: 1.8em;
-    font-family: 'Indie Flower', cursive;
+    font-family: "Indie Flower", cursive;
     margin-top: 10vh;
+  }
+
+  #previouspage,
+  #nextpage {
+    font-size: 1.2em;
+    background-color: rgb(235, 235, 235);
+    color: black;
+    border: none;
+    padding: 3%;
+    margin-left: 5vw;
+    box-shadow: 2px 2px 5px 2px #000000;
+    margin-top: 10vh;
+  }
+  #previouspage:hover,
+  #nextpage:hover {
+    color: #b2adb7;
+  }
+
+  #board-container {
+    border: ridge 3px white;
+    box-shadow: 1px 1px 10px 1px black;
+    padding: 5%;
+    margin-bottom: 50px;
+  }
+
+  #unfave {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 1.2em;
+    border: none;
+    background-color: rgb(156, 156, 156);
+    color: white;
+    margin-left: 10%;
+    width: 80%;
+    height: 46px;
+    align-self: start;
+    align-items: center;
+    margin-top: 12%;
   }
 }
 </style>

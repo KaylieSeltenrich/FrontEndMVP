@@ -53,5 +53,11 @@ data() {
 </script>
 
 <style lang="css" scoped>
-
+div{
+  margin-bottom: 5%;
+}
+p{ 
+  font-weight: bold;
+  font-size: 1.2em;
+}
 </style>

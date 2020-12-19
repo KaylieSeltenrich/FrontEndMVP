@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h1 id="title"> Most Liked Boards of the Month: </h1>
+    <h1 id="title">Most Liked Boards of the Month:</h1>
     <div id="page-container">
-      <div v-for="mostBoardLike in mostBoardLikes" :key="mostBoardLike">
+      <div id="board-container" v-for="mostBoardLike in mostBoardLikes" :key="mostBoardLike">
         <h2 class="boardtitle">Username:</h2>
-        {{ mostBoardLike[0] }}
+        <p style="font-size:1.2em; margin:0">{{ mostBoardLike[0] }} </p>
         <h2 class="boardtitle">Title:</h2>
-        {{ mostBoardLike[2] }} <br />
+        <p style="font-size:1.2em; margin:0">{{ mostBoardLike[2] }} </p> <br />
         <img id="image" v-bind:src="mostBoardLike[3]" />
         <div id="container">
           <div
@@ -80,24 +80,25 @@
             {{ mostBoardLike[15] }}
           </div>
           <h2 class="boardtitle">Created at:</h2>
-          {{ mostBoardLike[4] }}
+          <p style="font-size:1.1em; margin:0; align-self:start;">{{ mostBoardLike[4] }}</p>
         </div>
-                  <board-likes id="likes" :showButton="false" :boardId="mostBoardLike[1]"> </board-likes>
+        <board-likes id="likes" :showButton="false" :boardId="mostBoardLike[1]">
+        </board-likes>
       </div>
     </div>
-    <button v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
-    ><button @click="NextBoards()">Next Page</button>
+    <button id="previouspage" v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
+    ><button id="nextpage" @click="NextBoards()">Next Page</button>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import BoardLikes from "./BoardLikes.vue"
+import BoardLikes from "./BoardLikes.vue";
 
 export default {
-    components: {
-        BoardLikes,
-    },
+  components: {
+    BoardLikes,
+  },
   mounted() {
     this.getMostLiked();
   },
@@ -125,6 +126,14 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+
+    CopyHex: function(element) {
+      let range = document.createRange();
+      range.selectNode(element);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
     },
   },
 };
@@ -159,10 +168,32 @@ export default {
   margin: 0;
 }
 
-#title{
+#title {
   display: block;
 }
 
+#previouspage,
+#nextpage {
+  font-size: 1.2em;
+  background-color: rgb(235, 235, 235);
+  color: black;
+  border: none;
+  padding: 3%;
+  margin-left: 5vw;
+  box-shadow: 2px 2px 5px 2px #000000;
+  margin-top: 10vh;
+}
+#previouspage:hover,
+#nextpage:hover {
+  color: #b2adb7;
+}
+
+#board-container{
+  border: ridge 3px white;
+  box-shadow: 1px 1px 10px 1px black;
+  padding: 5%;
+  margin-bottom: 50px;
+}
 
 @media (max-width: 600px) {
   .fill {
@@ -189,23 +220,45 @@ export default {
   }
 
   .boardtitle {
-    font-size: 1em;
+    font-size: 1.3em;
     margin: 2%;
   }
 
-  #likes{
+  #likes {
     margin: 0;
     font-size: 1.5em;
     font-weight: bold;
     text-align: center;
     margin-bottom: 5vh;
-
   }
 
-  #title{
+  #title {
     font-size: 1.8em;
-    font-family: 'Indie Flower', cursive;
+    font-family: "Indie Flower", cursive;
     margin-top: 10vh;
   }
+
+  #previouspage,
+  #nextpage {
+    font-size: 1.2em;
+    background-color: rgb(235, 235, 235);
+    color: black;
+    border: none;
+    padding: 3%;
+    margin-left: 5vw;
+    box-shadow: 2px 2px 5px 2px #000000;
+    margin-top: 10vh;
+  }
+  #previouspage:hover,
+  #nextpage:hover {
+    color: #b2adb7;
+  }
+
+  #board-container{
+  border: ridge 3px white;
+  box-shadow: 1px 1px 10px 1px black;
+  padding: 5%;
+  margin-bottom: 50px;
+}
 }
 </style>

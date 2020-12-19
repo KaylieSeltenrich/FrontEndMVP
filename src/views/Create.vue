@@ -10,7 +10,7 @@
 
     <div v-if="loginToken != undefined" class="create">
       <br />
-      <h3>How to use:</h3>
+      <h1 id="title">How to use:</h1>
       <p>
         You can either: <br />
         -Search for an image based on any search query you wish. You can
@@ -54,3 +54,10 @@ export default {
   },
 };
 </script>
+
+<style lang="css" scoped>
+ #title {
+    font-size: 2em;
+    font-family: "Indie Flower", cursive;
+  }
+</style>

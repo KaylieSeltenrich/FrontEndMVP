@@ -1,10 +1,10 @@
 <template>
   <div>
-    <br/>
-    <button v-if="!isFaved" @click="faveBoard()">
+    <br />
+    <button id="fave" v-if="!isFaved" @click="faveBoard()">
       Favourite Board
     </button>
-    <button v-if="isFaved" @click="unfaveBoard()">
+    <button id="unfave" v-if="isFaved" @click="unfaveBoard()">
       UnFavourite Board
     </button>
   </div>
@@ -48,7 +48,7 @@ export default {
           },
         })
         .then((response) => {
-          console.log(response)
+          console.log(response);
           this.boardFaves = response.data;
           this.isFaved =
             this.boardFaves.filter((boardFave) => {
@@ -97,7 +97,7 @@ export default {
         })
         .then((response) => {
           this.boardFaves = response.data;
-          this.isFaved = false
+          this.isFaved = false;
         })
         .catch((error) => {
           console.log(error);
@@ -107,4 +107,19 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="css" scoped>
+#fave, #unfave{
+   display: grid;
+  grid-template-columns: 1fr;
+  font-size: 1.2em;
+  border: none;
+  background-color: rgb(156, 156, 156);
+  color: white;
+  margin-left: 10%;
+  width: 80%;
+  height: 46px;
+  align-self: start;
+  align-items: center;
+  margin-top: 12%;
+}
+</style>
