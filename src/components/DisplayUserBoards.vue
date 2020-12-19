@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h1 id="title"> Your Boards: </h1>
+    <h1 id="title">Your Boards:</h1>
     <div id="page-container">
       <div id="board-container" v-for="board in userBoards" :key="board.id">
         <h2 class="boardtitle">Username:</h2>
         <p style="font-size:1.2em; margin:0">{{ board.username }}</p>
         <h2 class="boardtitle">Title:</h2>
-         <p style="font-size:1.2em; margin:0">{{ board.title }}</p> <br />
+        <p style="font-size:1.2em; margin:0">{{ board.title }}</p>
+        <br />
         <img id="image" v-bind:src="board.image" />
         <div id="container">
           <div
@@ -80,13 +81,19 @@
             {{ board.colour10 }}
           </div>
           <h2 class="boardtitle">Created at:</h2>
-          <p style="font-size:1.1em; margin:0; align-self:start;">{{ board.createdAt }}</p>
+          <p style="font-size:1.1em; margin:0; align-self:start;">
+            {{ board.createdAt }}
+          </p>
         </div>
         <board-likes id="likes" :ownerId="board.userId" :boardId="board.id">
         </board-likes>
         <div id="button-container">
-          <button id="delete" @click="deleteBoard(board.id)">Delete Board</button> <br />
-          <input type="text" v-model="title" /><button id="update"
+          <button id="delete" @click="deleteBoard(board.id)">
+            Delete Board
+          </button>
+          <br />
+          <input type="text" v-model="title" /><button
+            id="update"
             @click="updateTitle(board.id)"
           >
             Update Board Title
@@ -94,7 +101,8 @@
         </div>
       </div>
     </div>
-    <button id="previouspage" v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
+    <button id="previouspage" v-if="offset != 0" @click="PreviousBoards()">
+      Previous Page</button
     ><button id="nextpage" @click="NextBoards()">Next Page</button>
   </div>
 </template>
@@ -173,12 +181,12 @@ export default {
     },
 
     NextBoards: function() {
-      this.offset = this.offset + 5;
+      this.offset = this.offset + 6;
       this.$store.dispatch("getUserBoards", this.offset);
     },
 
     PreviousBoards: function() {
-      this.offset = this.offset - 5;
+      this.offset = this.offset - 6;
       this.$store.dispatch("getUserBoards", this.offset);
     },
   },
@@ -214,14 +222,15 @@ export default {
   margin: 0;
 }
 
- #title{
-    font-size: 1.8em;
-    font-family: 'Indie Flower', cursive;
-  }
+#title {
+  font-size: 1.8em;
+  font-family: "Indie Flower", cursive;
+}
 
-  #previouspage, #nextpage {
+#previouspage,
+#nextpage {
   font-size: 1.2em;
-  background-color:rgb(235, 235, 235);
+  background-color: rgb(235, 235, 235);
   color: black;
   border: none;
   padding: 3%;
@@ -229,11 +238,12 @@ export default {
   box-shadow: 2px 2px 5px 2px #000000;
   margin-top: 10vh;
 }
-#previouspage:hover, #nextpage:hover{
+#previouspage:hover,
+#nextpage:hover {
   color: #b2adb7;
 }
 
-#board-container{
+#board-container {
   border: ridge 3px white;
   box-shadow: 1px 1px 10px 1px black;
   padding: 5%;
@@ -277,47 +287,118 @@ export default {
     margin-bottom: 5vh;
   }
 
-  #button-container{
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 70%;
-  margin-left: 15%;
+  #button-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 70%;
+    margin-left: 15%;
   }
 
-   #title{
+  #title {
     font-size: 1.8em;
-    font-family: 'Indie Flower', cursive;
+    font-family: "Indie Flower", cursive;
   }
 
-  #delete, #update{
-  font-size: 1.2em;
+  #delete,
+  #update {
+    font-size: 1.2em;
   }
 
-  input{
-    height:3vh;
+  input {
+    height: 3vh;
     margin-bottom: 2vh;
   }
 
-  #previouspage, #nextpage {
-  font-size: 1.2em;
-  background-color:rgb(235, 235, 235);
-  color: black;
-  border: none;
-  padding: 3%;
-  margin-left: 5vw;
-  box-shadow: 2px 2px 5px 2px #000000;
-  margin-top: 10vh;
-}
-#previouspage:hover, #nextpage:hover{
-  color: #b2adb7;
+  #previouspage,
+  #nextpage {
+    font-size: 1.2em;
+    background-color: rgb(235, 235, 235);
+    color: black;
+    border: none;
+    padding: 3%;
+    margin-left: 5vw;
+    box-shadow: 2px 2px 5px 2px #000000;
+    margin-top: 10vh;
+  }
+  #previouspage:hover,
+  #nextpage:hover {
+    color: #b2adb7;
+  }
+
+  #board-container {
+    border: ridge 3px white;
+    box-shadow: 1px 1px 10px 1px black;
+    padding: 5%;
+    margin-bottom: 50px;
+  }
 }
 
-#board-container{
-  border: ridge 3px white;
-  box-shadow: 1px 1px 10px 1px black;
-  padding: 5%;
-  margin-bottom: 50px;
-}
+/* TABLET */
+@media only screen and (min-width: 768px) {
+  .fill {
+    width: 100%;
+    height: 100%;
+  }
+  #container {
+    height: 35vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    width: 100%;
+  }
 
+  #delete,
+  #update {
+    font-size: 1.2em;
+  }
+
+  input {
+    height: 2vh;
+    margin: 2vh;
+  }
+  #image {
+    width: 330px;
+    height: 330px;
+    object-fit: cover;
+  }
+
+  .boardtitle {
+    font-size: 1.3em;
+    margin: 2%;
+  }
+
+  #title {
+    font-size: 1.8em;
+    font-family: "Indie Flower", cursive;
+    margin-top: 3vh;
+  }
+
+  #previouspage,
+  #nextpage {
+    font-size: 1.2em;
+    background-color: rgb(235, 235, 235);
+    color: black;
+    border: none;
+    padding: 3%;
+    margin-left: 5vw;
+    box-shadow: 2px 2px 5px 2px #000000;
+  }
+  #previouspage:hover,
+  #nextpage:hover {
+    color: #b2adb7;
+  }
+
+  #board-container {
+    border: ridge 3px white;
+    box-shadow: 1px 1px 10px 1px black;
+    padding: 5%;
+    margin-bottom: 50px;
+    width: 90%;
+  }
 }
 </style>

@@ -30,7 +30,6 @@
     <div id="footer">
       Website Created By Kaylie Seltenrich <br />
       <a href="https://www.pexels.com">Photos provided by Pexels</a>
-      <br />
       <a href="https://lokeshdhakar.com/projects/color-thief/"
         >Pallette generator created using Color Thief</a
       >
@@ -180,6 +179,72 @@ export default {
     font-weight: bold;
     background-color: rgb(240, 238, 238);
     padding: 5%;
+  }
+
+  #footer a:link {
+    color: grey;
+  }
+  #footer a:visited {
+    color: grey;
+  }
+  #footer a:hover {
+    color: rgb(61, 61, 61);
+  }
+}
+
+/* TABLET */
+@media only screen and (min-width: 768px){
+  #logo {
+    width: 80%;
+    margin-bottom: 5%;
+  }
+
+  #hamburger {
+    position: absolute;
+    top: 15vh;
+    left: 0;
+    height: 6vh;
+    width: 10vw;
+  }
+
+  #nav {
+    display: none;
+    position: relative;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    column-gap: 0;
+    width: 100%;
+    top: 5vh;
+    margin: 0;
+    margin-bottom: 10%;
+  }
+
+  .link {
+    display: grid;
+    text-decoration: none;
+    border: none;
+    margin: 5%;
+    padding: 0;
+    background-color: rgb(235, 235, 235);
+    height: 100%;
+    align-self: start;
+    align-items: center;
+  }
+
+  #logout {
+    position: absolute;
+    top: 20vh;
+    right: 5vw;
+  }
+
+  #footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 20vh;
+    text-align: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: rgb(240, 238, 238);
+
   }
 
   #footer a:link {

@@ -104,22 +104,20 @@ export default {
         });
     },
 
-  showUpdateProfile: function() {
-    var x = document.getElementById("profile-info");
-    if (x.style.display === "none") {
-      x.style.display = "grid";
-    } else {
-      x.style.display = "none";
-    }
+    showUpdateProfile: function() {
+      var x = document.getElementById("profile-info");
+      if (x.style.display === "none") {
+        x.style.display = "grid";
+      } else {
+        x.style.display = "none";
+      }
+    },
   },
-},
-
-}
+};
 </script>
 
 <style lang="css" scoped>
 @media (max-width: 600px) {
- 
   #profile-info {
     display: none;
     grid-template-columns: 1fr 1fr;
@@ -136,7 +134,7 @@ export default {
     margin-top: 10%;
   }
 
-  #updatebutton{
+  #updatebutton {
     display: grid;
     grid-template-columns: 1fr;
     font-size: 1em;
@@ -144,9 +142,35 @@ export default {
     width: 100%;
     border: none;
     margin-top: 8vh;
-    
+  }
+}
 
-   
+@media (max-width: 768px) {
+  #profile-info {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+  }
+  h1 {
+    font-size: 1em;
+  }
+
+  input {
+    width: 70%;
+  }
+
+  button {
+    margin-top: 10%;
+  }
+
+  #updatebutton {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 5%;
+    width: 100%;
+    border: none;
+    margin-top: 8vh;
   }
 }
 </style>
