@@ -45,5 +45,12 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+button {
+  font-size: 1.2em;
+  background-color:rgb(156, 156, 156);
+  color: white;
+}
+button:hover{
+  background-color: rgb(104, 104, 104);
+}
 </style>

@@ -7,7 +7,7 @@
       <input type="text" v-model="email" />
       <p>Password:</p>
       <input type="password" v-model="password" />
-      <h2 @click="signupUser()">Sign Up</h2>
+      <h2 id="signup" @click="signupUser()">Sign Up</h2>
     </div>
   </div>
 </template>
@@ -53,5 +53,16 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#signup{
+  width: 50%;
+  margin-top: 10%;
+  margin-left: 25%;
+  background-color:rgb(138, 138, 138);
+  color: white;
+  box-shadow: 1px 2px 5px 1px black;
+}
 
+#signup:hover{
+background-color: lightgrey;
+}
 </style>

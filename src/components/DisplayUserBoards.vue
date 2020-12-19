@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 id="title"> Your Boards: </h1>
     <div id="page-container">
       <div v-for="board in userBoards" :key="board.id">
         <h2 class="boardtitle">Username:</h2>
@@ -84,8 +85,8 @@
         <board-likes id="likes" :ownerId="board.userId" :boardId="board.id">
         </board-likes>
         <div id="button-container">
-          <button @click="deleteBoard(board.id)">Delete Board</button> <br />
-          <input type="text" v-model="title" /><button
+          <button id="delete" @click="deleteBoard(board.id)">Delete Board</button> <br />
+          <input type="text" v-model="title" /><button id="update"
             @click="updateTitle(board.id)"
           >
             Update Board Title
@@ -213,6 +214,11 @@ export default {
   margin: 0;
 }
 
+ #title{
+    font-size: 1.8em;
+    font-family: 'Indie Flower', cursive;
+  }
+
 @media (max-width: 600px) {
   .fill {
     width: 100%;
@@ -253,7 +259,23 @@ export default {
   #button-container{
   display: grid;
   grid-template-columns: 1fr;
+  width: 70%;
+  margin-left: 15%;
   }
-  
+
+   #title{
+    font-size: 1.8em;
+    font-family: 'Indie Flower', cursive;
+  }
+
+  #delete, #update{
+  font-size: 1.2em;
+  }
+
+  input{
+    height:3vh;
+    margin-bottom: 2vh;
+  }
+
 }
 </style>

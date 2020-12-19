@@ -1,5 +1,6 @@
 <template>
   <div>
+     <h1 id="title"> Your Favourited Boards: </h1>
     <div id="page-container">
       <div v-for="board in faveBoards" :key="board.id">
         <h2 class="boardtitle">Username:</h2>
@@ -192,6 +193,12 @@ export default {
   margin: 0;
 }
 
+ #title{
+    font-size: 1.8em;
+    font-family: 'Indie Flower', cursive;
+    margin-top: 10vh;
+  }
+
 @media (max-width: 600px) {
   .fill {
     width: 100%;
@@ -227,6 +234,12 @@ export default {
     font-weight: bold;
     text-align: center;
     margin-bottom: 5vh;
+  }
+
+   #title{
+    font-size: 1.8em;
+    font-family: 'Indie Flower', cursive;
+    margin-top: 10vh;
   }
 }
 </style>

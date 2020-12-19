@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 id="title"> All Boards: </h1>
     <div id="page-container">
       <div v-for="board in boards" :key="board.id">
         <h2 class="boardtitle">Username:</h2>
@@ -88,8 +89,8 @@
         </div>
       </div>
     </div>
-    <button v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
-    ><button @click="NextBoards()">Next Page</button>
+    <button id="previouspage" v-if="offset != 0" @click="PreviousBoards()">Previous Page</button
+    ><button id="nextpage" @click="NextBoards()">Next Page</button>
   </div>
 </template>
 
@@ -169,6 +170,23 @@ export default {
   margin: 0;
 }
 
+#title{
+    font-size: 1.8em;
+    font-family: 'Indie Flower', cursive;
+    margin-top: 10vh;
+  }
+
+#previouspage, #nextpage {
+  font-size: 1.2em;
+  background-color:rgb(235, 235, 235);
+  color: black;
+  border: none;
+  padding: 3%;
+}
+#previouspage:hover, #nextpage:hover{
+  color: #b2adb7;
+}
+
 @media (max-width: 600px) {
   .fill {
     width: 100%;
@@ -198,5 +216,25 @@ export default {
     font-size: 1em;
     margin: 2%;
   }
+
+  #title{
+    font-size: 1.8em;
+    font-family: 'Indie Flower', cursive;
+    margin-top: 10vh;
+  }
+
+  #previouspage, #nextpage {
+  font-size: 1.2em;
+  background-color:rgb(235, 235, 235);
+  color: black;
+  border: none;
+  padding: 3%;
+  margin-left: 5vw;
+  box-shadow: 2px 2px 5px 2px #000000;
 }
+#previouspage:hover, #nextpage:hover{
+  color: #b2adb7;
+}
+}
+
 </style>

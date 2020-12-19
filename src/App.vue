@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <button id="hamburger" @click="showNav()">
+    <button id="hamburger" v-if="loginToken != undefined" @click="showNav()">
       <img src="@/assets/hamburger.png" width="30px" alt="hamburger menu" />
     </button>
     <img
@@ -19,11 +19,22 @@
     <div id="logout" v-if="loginToken != undefined">
       <logout> </logout>
     </div>
-    <div id="nav" v-else>
+    <button id="hamburger" v-if="!loginToken" @click="showLoggedOutNav()">
+      <img src="@/assets/hamburger.png" width="30px" alt="hamburger menu" />
+    </button>
+    <div id="signedout-nav" v-if="!loginToken">
       <router-link class="link" to="/login"> Login</router-link>
       <router-link class="link" to="/signup"> Signup </router-link>
     </div>
     <router-view />
+    <div id="footer">
+      Website Created By Kaylie Seltenrich <br />
+      <a href="https://www.pexels.com">Photos provided by Pexels</a>
+      <br />
+      <a href="https://lokeshdhakar.com/projects/color-thief/"
+        >Pallette generator created using Color Thief</a
+      >
+    </div>
   </div>
 </template>
 <script>
@@ -48,10 +59,21 @@ export default {
         x.style.display = "none";
       }
     },
+
+    showLoggedOutNav: function() {
+      var x = document.getElementById("signedout-nav");
+      if (x.style.display === "none") {
+        x.style.display = "grid";
+      } else {
+        x.style.display = "none";
+      }
+    },
   },
 };
 </script>
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap");
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -68,6 +90,25 @@ export default {
   margin-right: 10%;
   width: 80%;
   margin-top: 5%;
+}
+
+#signedout-nav {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  margin-top: 10%;
+}
+
+#signedout-nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#signedout-nav a.router-link-exact-active {
+  color: #b2adb7;
 }
 
 #nav a {
@@ -114,7 +155,6 @@ export default {
     top: 5vh;
     margin: 0;
     margin-bottom: 10%;
-   
   }
 
   .link {
@@ -127,16 +167,30 @@ export default {
     background-color: rgb(235, 235, 235);
     height: 100%;
     align-self: start;
-    align-items:center;
-    
+    align-items: center;
   }
 
-  #logout{
+  #logout {
     position: absolute;
     top: 18vh;
     right: 5vw;
-    
+  }
 
+  #footer {
+    margin-top: 10vh;
+    font-weight: bold;
+    background-color: rgb(240, 238, 238);
+    padding: 5%;
+  }
+
+  #footer a:link {
+    color: grey;
+  }
+  #footer a:visited {
+    color: grey;
+  }
+  #footer a:hover {
+    color: rgb(61, 61, 61);
   }
 }
 </style>

@@ -5,7 +5,7 @@
       <input type="text" id="email-input" class="input-text" v-model="email" />
       <p>Password:</p>
       <input type="password" id="password-input" class="input-text" v-model="password" />
-      <h2 @click="loginUser">Login</h2>
+      <h2 id="login" @click="loginUser">Login</h2>
       <h3>{{ loginStatus }}</h3>
     </div>
   </div>
@@ -54,5 +54,17 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#login{
+  width: 50%;
+  margin-top: 10%;
+  margin-left: 25%;
+  background-color:rgb(138, 138, 138);
+  color: white;
+  box-shadow: 1px 2px 5px 1px black;
+}
+
+#login:hover{
+background-color: lightgrey;
+}
 
 </style>

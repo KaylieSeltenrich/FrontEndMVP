@@ -1,6 +1,6 @@
 <template>
   <div id="profile-container">
-    <button @click="showUpdateProfile()">
+    <button id="updatebutton" @click="showUpdateProfile()">
       Click here to update your user information
     </button>
     <div id="profile-info">
@@ -134,6 +134,19 @@ export default {
 
   button {
     margin-top: 10%;
+  }
+
+  #updatebutton{
+    display: grid;
+    grid-template-columns: 1fr;
+    font-size: 1em;
+    padding: 5%;
+    width: 100%;
+    border: none;
+    margin-top: 8vh;
+    
+
+   
   }
 }
 </style>

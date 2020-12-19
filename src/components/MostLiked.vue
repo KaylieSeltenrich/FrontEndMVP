@@ -204,6 +204,8 @@ export default {
 
   #title{
     font-size: 1.8em;
+    font-family: 'Indie Flower', cursive;
+    margin-top: 10vh;
   }
 }
 </style>
