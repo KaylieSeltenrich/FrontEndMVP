@@ -8,6 +8,7 @@
       <p>Password:</p>
       <input type="password" v-model="password" />
       <h2 id="signup" @click="signupUser()">Sign Up</h2>
+      <h3> {{signupStatus}} </h3>
     </div>
   </div>
 </template>
@@ -40,8 +41,11 @@ export default {
         })
         .then((response) => {
           console.log(response.data);
-          cookies.set("session", response.data[0].loginToken);
-          this.$router.push("/home");
+          this.signupStatus = "Success";
+          cookies.set("session", response.data.loginToken);
+          cookies.set("user", response.data.userId);
+          this.$store.commit("loginUpdate", response.data.loginToken, response.data.userId);
+          this.$router.push("/");
         })
         .catch((error) => {
           console.log(error);

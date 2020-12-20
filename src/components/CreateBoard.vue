@@ -2,7 +2,7 @@
   <div>
     <p>Title:</p>
     <input type="text" v-model="title">
-    <button @click="createBoard()">Save Board</button>
+    <button @click="createBoard($event.currentTarget)">Save Board</button>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ data() {
       }
   },
   methods: {
-    createBoard: function() {
+    createBoard: function(button) {
       axios
         .request({
           url: "https://inspo.ml/api/boards",
@@ -43,9 +43,11 @@ data() {
         })
         .then((response) => {
           console.log(response);
+          button.innerHTML = "Saved Succesfully!"
         })
         .catch((error) => {
           console.log(error);
+          button.innerHTML = "Error Saving!"
         });
     },
   },

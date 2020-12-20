@@ -19,8 +19,9 @@ export default new Vuex.Store({
     updateImages: function(state,data) {
       state.images = data;
     },
-    loginUpdate: function (state, data) {
+    loginUpdate: function (state, data, userId) {
       state.loginToken = data
+      state.userId = userId
     },
     loginDelete: function (state) {
       state.loginToken = undefined
@@ -35,7 +36,6 @@ export default new Vuex.Store({
     faveBoards: function(state,data){
       state.favouriteBoards = data
     }
-
 
   },
   actions: {
