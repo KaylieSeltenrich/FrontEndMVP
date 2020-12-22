@@ -44,7 +44,7 @@ export default {
           this.signupStatus = "Success";
           cookies.set("session", response.data.loginToken);
           cookies.set("user", response.data.userId);
-          this.$store.commit("loginUpdate", response.data.loginToken, response.data.userId);
+          this.$store.commit("loginUpdate", {loginToken:response.data.loginToken, userId:response.data.id});
           this.$router.push("/");
         })
         .catch((error) => {

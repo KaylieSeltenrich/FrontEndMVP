@@ -19,9 +19,9 @@ export default new Vuex.Store({
     updateImages: function(state,data) {
       state.images = data;
     },
-    loginUpdate: function (state, data, userId) {
-      state.loginToken = data
-      state.userId = userId
+    loginUpdate: function (state, payload) {
+      state.loginToken = payload.loginToken;
+      state.userId = payload.userId
     },
     loginDelete: function (state) {
       state.loginToken = undefined
@@ -100,6 +100,7 @@ export default new Vuex.Store({
 
 
     getUserBoards: function(context,offset) {
+      console.log(context.state)
       axios
         .request({
           url: "https://inspo.ml/api/boards",
